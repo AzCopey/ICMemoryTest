@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ICMemory\BuddyAllocator.cpp" />
+    <ClCompile Include="ICMemory\FrameAllocator.cpp" />
+    <ClCompile Include="Tests\BuddyAllocatorTest.cpp" />
+    <ClCompile Include="Tests\Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Catch\include\catch.hpp" />
+    <ClInclude Include="Catch\include\catch_session.hpp" />
+    <ClInclude Include="Catch\include\catch_with_main.hpp" />
+    <ClInclude Include="Catch\include\external\clara.h" />
+    <ClInclude Include="Catch\include\external\tbc_text_format.h" />
+    <ClInclude Include="Catch\include\internal\catch_approx.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_assertionresult.h" />
+    <ClInclude Include="Catch\include\internal\catch_assertionresult.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_capture.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_clara.h" />
+    <ClInclude Include="Catch\include\internal\catch_commandline.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_common.h" />
+    <ClInclude Include="Catch\include\internal\catch_common.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_compiler_capabilities.h" />
+    <ClInclude Include="Catch\include\internal\catch_config.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_console_colour.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_console_colour_impl.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_context.h" />
+    <ClInclude Include="Catch\include\internal\catch_context_impl.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_debugger.h" />
+    <ClInclude Include="Catch\include\internal\catch_debugger.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_default_main.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_evaluate.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_exception_translator_registry.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_expression_lhs.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_fatal_condition.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_generators.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_generators_impl.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_impl.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_interfaces_capture.h" />
+    <ClInclude Include="Catch\include\internal\catch_interfaces_config.h" />
+    <ClInclude Include="Catch\include\internal\catch_interfaces_exception.h" />
+    <ClInclude Include="Catch\include\internal\catch_interfaces_generators.h" />
+    <ClInclude Include="Catch\include\internal\catch_interfaces_registry_hub.h" />
+    <ClInclude Include="Catch\include\internal\catch_interfaces_reporter.h" />
+    <ClInclude Include="Catch\include\internal\catch_interfaces_runner.h" />
+    <ClInclude Include="Catch\include\internal\catch_interfaces_tag_alias_registry.h" />
+    <ClInclude Include="Catch\include\internal\catch_interfaces_testcase.h" />
+    <ClInclude Include="Catch\include\internal\catch_legacy_reporter_adapter.h" />
+    <ClInclude Include="Catch\include\internal\catch_legacy_reporter_adapter.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_list.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_matchers.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_message.h" />
+    <ClInclude Include="Catch\include\internal\catch_message.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_notimplemented_exception.h" />
+    <ClInclude Include="Catch\include\internal\catch_notimplemented_exception.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_objc.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_objc_arc.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_option.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_platform.h" />
+    <ClInclude Include="Catch\include\internal\catch_ptr.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_reenable_warnings.h" />
+    <ClInclude Include="Catch\include\internal\catch_registry_hub.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_reporter_registrars.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_reporter_registry.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_result_builder.h" />
+    <ClInclude Include="Catch\include\internal\catch_result_builder.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_result_type.h" />
+    <ClInclude Include="Catch\include\internal\catch_run_context.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_section.h" />
+    <ClInclude Include="Catch\include\internal\catch_section.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_section_info.h" />
+    <ClInclude Include="Catch\include\internal\catch_section_info.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_stream.h" />
+    <ClInclude Include="Catch\include\internal\catch_stream.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_streambuf.h" />
+    <ClInclude Include="Catch\include\internal\catch_suppress_warnings.h" />
+    <ClInclude Include="Catch\include\internal\catch_tag_alias.h" />
+    <ClInclude Include="Catch\include\internal\catch_tag_alias_registry.h" />
+    <ClInclude Include="Catch\include\internal\catch_tag_alias_registry.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_test_case_info.h" />
+    <ClInclude Include="Catch\include\internal\catch_test_case_info.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_test_case_registry_impl.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_test_case_tracker.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_test_registry.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_test_spec.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_test_spec_parser.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_text.h" />
+    <ClInclude Include="Catch\include\internal\catch_timer.h" />
+    <ClInclude Include="Catch\include\internal\catch_timer.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_tostring.h" />
+    <ClInclude Include="Catch\include\internal\catch_tostring.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_totals.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_version.h" />
+    <ClInclude Include="Catch\include\internal\catch_version.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_wildcard_pattern.hpp" />
+    <ClInclude Include="Catch\include\internal\catch_xmlwriter.hpp" />
+    <ClInclude Include="Catch\include\reporters\catch_reporter_bases.hpp" />
+    <ClInclude Include="Catch\include\reporters\catch_reporter_compact.hpp" />
+    <ClInclude Include="Catch\include\reporters\catch_reporter_console.hpp" />
+    <ClInclude Include="Catch\include\reporters\catch_reporter_junit.hpp" />
+    <ClInclude Include="Catch\include\reporters\catch_reporter_multi.hpp" />
+    <ClInclude Include="Catch\include\reporters\catch_reporter_teamcity.hpp" />
+    <ClInclude Include="Catch\include\reporters\catch_reporter_xml.hpp" />
+    <ClInclude Include="ICMemory\BuddyAllocator.h" />
+    <ClInclude Include="ICMemory\ForwardDeclarations.h" />
+    <ClInclude Include="ICMemory\FrameAllocator.h" />
+    <ClInclude Include="ICMemory\ICMemory.h" />
+    <ClInclude Include="ICMemory\MakeUnique.h" />
+    <ClInclude Include="ICMemory\MemoryUtils.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{80F97F78-C77E-46C7-B97C-2F0783FF6A5C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ICMemoryTest</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>Catch\include\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>Catch\include\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
