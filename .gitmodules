@@ -1,0 +1,3 @@
+[submodule "ICMemory"]
+	path = ICMemory
+	url = http://github.org/azcopey/icmemory.git
