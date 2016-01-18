@@ -1,3 +1,6 @@
 [submodule "ICMemory"]
 	path = ICMemory
 	url = http://github.org/azcopey/icmemory.git
+[submodule "Catch"]
+	path = Catch
+	url = https://github.com/philsquared/Catch.git
