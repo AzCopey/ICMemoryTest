@@ -123,6 +123,7 @@
     <ClInclude Include="ICMemory\ForwardDeclarations.h" />
     <ClInclude Include="ICMemory\FrameAllocator.h" />
     <ClInclude Include="ICMemory\ICMemory.h" />
+    <ClInclude Include="ICMemory\MakeShared.h" />
     <ClInclude Include="ICMemory\MakeUnique.h" />
     <ClInclude Include="ICMemory\MemoryUtils.h" />
   </ItemGroup>

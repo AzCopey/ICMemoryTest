@@ -335,5 +335,8 @@
     <ClInclude Include="ICMemory\MakeUnique.h">
       <Filter>ICMemory</Filter>
     </ClInclude>
+    <ClInclude Include="ICMemory\MakeShared.h">
+      <Filter>ICMemory</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
