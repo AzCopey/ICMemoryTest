@@ -33,6 +33,9 @@
     <ClCompile Include="Tests\Main.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\FrameAllocatorTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ICMemory\BuddyAllocator.h">

@@ -2,7 +2,7 @@
 //
 // The MIT License(MIT)
 // 
-// Copyright(c) 2015 Ian Copland
+// Copyright(c) 2016 Ian Copland
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
@@ -253,7 +253,7 @@ TEST_CASE("Objects of varying size can be allocated from a BuddyAllocator.", "[B
     auto valueA = IC::makeUnique<int>(allocator, 1);
 
     auto valueB = IC::makeUnique<LargeExampleClass>(allocator);
-    memcpy(valueB->buffer, k_exampleBuffer, 128);
+    memcpy(valueB->buffer, k_exampleBuffer, 64);
 
     valueA = IC::makeUnique<int>(allocator, 2);
 

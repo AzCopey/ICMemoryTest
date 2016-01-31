@@ -22,6 +22,7 @@
     <ClCompile Include="ICMemory\BuddyAllocator.cpp" />
     <ClCompile Include="ICMemory\FrameAllocator.cpp" />
     <ClCompile Include="Tests\BuddyAllocatorTest.cpp" />
+    <ClCompile Include="Tests\FrameAllocatorTest.cpp" />
     <ClCompile Include="Tests\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
