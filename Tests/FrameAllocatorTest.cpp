@@ -230,7 +230,7 @@ TEST_CASE("Deallocating an object allocated from a FrameAllocator does not affec
 
 TEST_CASE("Objects of varying size can be allocated from a FrameAllocator.", "[FrameAllocator]")
 {
-    const char* k_exampleBuffer = "0123456789";
+    const char* k_exampleBuffer = "123456789\0";
 
     struct LargeExampleClass
     {
@@ -299,7 +299,6 @@ TEST_CASE("Resetting a frame allocator will allow previous memory to be re-used.
 
     value = IC::makeUnique<std::uint64_t>(frameAllocator, 2);
     auto valueBRaw = value.get();
-    value.reset();
 
     REQUIRE(*value == 2);
     REQUIRE(valueARaw == valueBRaw);
