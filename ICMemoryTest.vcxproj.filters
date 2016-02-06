@@ -341,5 +341,11 @@
     <ClInclude Include="ICMemory\MakeShared.h">
       <Filter>ICMemory</Filter>
     </ClInclude>
+    <ClInclude Include="ICMemory\StdAllocator.h">
+      <Filter>ICMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\MakeVector.h">
+      <Filter>ICMemory</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

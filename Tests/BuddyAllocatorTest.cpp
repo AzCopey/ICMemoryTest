@@ -25,6 +25,7 @@
 #include "../ICMemory/ICMemory.h"
 
 #include <catch.hpp>
+#include <vector>
 
 TEST_CASE("A unique pointer to a primitive can be allocated from a BuddyAllocator.", "[BuddyAllocator]")
 {
@@ -269,4 +270,24 @@ TEST_CASE("Objects of varying size can be allocated from a BuddyAllocator.", "[B
     REQUIRE(valueC->m_x == 5);
     REQUIRE(valueC->m_y == 10);
     REQUIRE(valueC->m_z == 15);
+}
+
+TEST_CASE("A vector can be allocated from a BuddyAllocator", "[BuddyAllocator]")
+{
+    IC::BuddyAllocator allocator(256, 16);
+
+    auto vec = IC::makeVector<int>(allocator);
+
+    vec.push_back(5);
+    vec.push_back(6);
+
+    REQUIRE(vec.size() == 2);
+    REQUIRE(vec[0] == 5);
+    REQUIRE(vec[1] == 6);
+
+    IC::Vector<int> vec2(vec);
+
+    REQUIRE(vec.size() == 2);
+    REQUIRE(vec2[0] == 5);
+    REQUIRE(vec2[1] == 6);
 }
