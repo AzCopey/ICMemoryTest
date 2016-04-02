@@ -36,6 +36,15 @@
     <ClCompile Include="Tests\FrameAllocatorTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\VectorTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\StringTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="ICMemory\String.cpp">
+      <Filter>ICMemory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ICMemory\BuddyAllocator.h">
@@ -335,16 +344,22 @@
     <ClInclude Include="ICMemory\ForwardDeclarations.h">
       <Filter>ICMemory</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\MakeUnique.h">
+    <ClInclude Include="ICMemory\IAllocator.h">
       <Filter>ICMemory</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\MakeShared.h">
+    <ClInclude Include="ICMemory\AllocatorWrapper.h">
       <Filter>ICMemory</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\StdAllocator.h">
+    <ClInclude Include="ICMemory\Vector.h">
       <Filter>ICMemory</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\MakeVector.h">
+    <ClInclude Include="ICMemory\UniquePtr.h">
+      <Filter>ICMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\SharedPtr.h">
+      <Filter>ICMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\String.h">
       <Filter>ICMemory</Filter>
     </ClInclude>
   </ItemGroup>

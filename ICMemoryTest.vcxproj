@@ -21,9 +21,12 @@
   <ItemGroup>
     <ClCompile Include="ICMemory\BuddyAllocator.cpp" />
     <ClCompile Include="ICMemory\FrameAllocator.cpp" />
+    <ClCompile Include="ICMemory\String.cpp" />
     <ClCompile Include="Tests\BuddyAllocatorTest.cpp" />
     <ClCompile Include="Tests\FrameAllocatorTest.cpp" />
     <ClCompile Include="Tests\Main.cpp" />
+    <ClCompile Include="Tests\StringTest.cpp" />
+    <ClCompile Include="Tests\VectorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Catch\include\catch.hpp" />
@@ -123,12 +126,14 @@
     <ClInclude Include="ICMemory\BuddyAllocator.h" />
     <ClInclude Include="ICMemory\ForwardDeclarations.h" />
     <ClInclude Include="ICMemory\FrameAllocator.h" />
+    <ClInclude Include="ICMemory\IAllocator.h" />
     <ClInclude Include="ICMemory\ICMemory.h" />
-    <ClInclude Include="ICMemory\MakeShared.h" />
-    <ClInclude Include="ICMemory\MakeUnique.h" />
-    <ClInclude Include="ICMemory\MakeVector.h" />
+    <ClInclude Include="ICMemory\String.h" />
+    <ClInclude Include="ICMemory\SharedPtr.h" />
+    <ClInclude Include="ICMemory\UniquePtr.h" />
+    <ClInclude Include="ICMemory\Vector.h" />
     <ClInclude Include="ICMemory\MemoryUtils.h" />
-    <ClInclude Include="ICMemory\StdAllocator.h" />
+    <ClInclude Include="ICMemory\AllocatorWrapper.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{80F97F78-C77E-46C7-B97C-2F0783FF6A5C}</ProjectGuid>
