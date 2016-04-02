@@ -39,7 +39,7 @@ TEST_CASE("String", "[Container]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto string = IC::makeString(allocator);
+        auto string = IC::MakeString(allocator);
         string.append(k_testString);
 
         REQUIRE(string == k_testString);
@@ -52,9 +52,9 @@ TEST_CASE("String", "[Container]")
         constexpr char k_testString[] = "test";
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
 
-        auto string = IC::makeString(LinearAllocator);
+        auto string = IC::MakeString(linearAllocator);
         string.append(k_testString);
 
         REQUIRE(string == k_testString);
@@ -68,7 +68,7 @@ TEST_CASE("String", "[Container]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto string = IC::makeString(allocator, k_testString);
+        auto string = IC::MakeString(allocator, k_testString);
 
         REQUIRE(string == k_testString);
     }
@@ -80,9 +80,9 @@ TEST_CASE("String", "[Container]")
         constexpr char k_testString[] = "test";
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
 
-        auto string = IC::makeString(LinearAllocator, k_testString);
+        auto string = IC::MakeString(linearAllocator, k_testString);
 
         REQUIRE(string == k_testString);
     }
@@ -96,7 +96,7 @@ TEST_CASE("String", "[Container]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto string = IC::makeString(allocator, k_testString, k_bufferSize);
+        auto string = IC::MakeString(allocator, k_testString, k_bufferSize);
 
         REQUIRE(string == k_testString);
     }
@@ -109,9 +109,9 @@ TEST_CASE("String", "[Container]")
         constexpr std::size_t k_bufferSize = 4;
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
 
-        auto string = IC::makeString(LinearAllocator, k_testString, k_bufferSize);
+        auto string = IC::MakeString(linearAllocator, k_testString, k_bufferSize);
 
         REQUIRE(string == k_testString);
     }
@@ -124,7 +124,7 @@ TEST_CASE("String", "[Container]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto string = IC::makeString(allocator, testString);
+        auto string = IC::MakeString(allocator, testString);
 
         REQUIRE(string == testString.c_str());
     }
@@ -136,9 +136,9 @@ TEST_CASE("String", "[Container]")
         const std::string testString = "test";
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
 
-        auto string = IC::makeString(LinearAllocator, testString);
+        auto string = IC::MakeString(linearAllocator, testString);
 
         REQUIRE(string == testString.c_str());
     }
@@ -151,7 +151,7 @@ TEST_CASE("String", "[Container]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto string = IC::makeString(allocator, testString.begin(), testString.end());
+        auto string = IC::MakeString(allocator, testString.begin(), testString.end());
 
         REQUIRE(string == testString.c_str());
     }
@@ -163,9 +163,9 @@ TEST_CASE("String", "[Container]")
         const std::string testString = "test";
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
 
-        auto string = IC::makeString(LinearAllocator, testString.begin(), testString.end());
+        auto string = IC::MakeString(linearAllocator, testString.begin(), testString.end());
 
         REQUIRE(string == testString.c_str());
     }

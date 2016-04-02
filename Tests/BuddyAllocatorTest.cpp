@@ -36,7 +36,7 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
     {
         IC::BuddyAllocator allocator(256, 16);
 
-        auto allocated = IC::makeUnique<int>(allocator);
+        auto allocated = IC::MakeUnique<int>(allocator);
         *allocated = 1;
 
         REQUIRE(*allocated == 1);
@@ -48,7 +48,7 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
     {
         IC::BuddyAllocator allocator(256, 16);
 
-        auto allocated = IC::makeUnique<int>(allocator, 1);
+        auto allocated = IC::MakeUnique<int>(allocator, 1);
 
         REQUIRE(*allocated == 1);
     }
@@ -64,7 +64,7 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto allocated = IC::makeUnique<ExampleClass>(allocator);
+        auto allocated = IC::MakeUnique<ExampleClass>(allocator);
         allocated->m_x = 1;
         allocated->m_y = 2;
 
@@ -84,7 +84,7 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto allocated = IC::makeUnique<ExampleClass>(allocator, 1, 2);
+        auto allocated = IC::MakeUnique<ExampleClass>(allocator, 1, 2);
 
         REQUIRE(allocated->m_x == 1);
         REQUIRE(allocated->m_y == 2);
@@ -105,7 +105,7 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto allocated = IC::makeUnique<ExampleClass>(allocator, exampleClass);
+        auto allocated = IC::MakeUnique<ExampleClass>(allocator, exampleClass);
 
         REQUIRE(allocated->m_x == 1);
         REQUIRE(allocated->m_y == 2);
@@ -119,7 +119,7 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto allocated = IC::makeUniqueArray<int>(allocator, 10);
+        auto allocated = IC::MakeUniqueArray<int>(allocator, 10);
 
         for (auto i = 0; i < k_numValues; ++i)
         {
@@ -138,7 +138,7 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
     {
         IC::BuddyAllocator allocator(256, 16);
 
-        auto allocated = IC::makeShared<int>(allocator);
+        auto allocated = IC::MakeShared<int>(allocator);
         *allocated = 1;
 
         REQUIRE(*allocated == 1);
@@ -150,7 +150,7 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
     {
         IC::BuddyAllocator allocator(256, 16);
 
-        auto allocated = IC::makeShared<int>(allocator, 1);
+        auto allocated = IC::MakeShared<int>(allocator, 1);
 
         REQUIRE(*allocated == 1);
     }
@@ -166,7 +166,7 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto allocated = IC::makeShared<ExampleClass>(allocator);
+        auto allocated = IC::MakeShared<ExampleClass>(allocator);
         allocated->m_x = 1;
         allocated->m_y = 2;
 
@@ -186,7 +186,7 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto allocated = IC::makeShared<ExampleClass>(allocator, 1, 2);
+        auto allocated = IC::MakeShared<ExampleClass>(allocator, 1, 2);
 
         REQUIRE(allocated->m_x == 1);
         REQUIRE(allocated->m_y == 2);
@@ -207,7 +207,7 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto allocated = IC::makeShared<ExampleClass>(allocator, exampleClass);
+        auto allocated = IC::MakeShared<ExampleClass>(allocator, exampleClass);
 
         REQUIRE(allocated->m_x == 1);
         REQUIRE(allocated->m_y == 2);
@@ -219,9 +219,9 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
     {
         IC::BuddyAllocator allocator(256, 16);
 
-        auto valueA = IC::makeUnique<int>(allocator, 1);
-        auto valueB = IC::makeUnique<int>(allocator, 2);
-        auto valueC = IC::makeUnique<int>(allocator, 3);
+        auto valueA = IC::MakeUnique<int>(allocator, 1);
+        auto valueB = IC::MakeUnique<int>(allocator, 2);
+        auto valueC = IC::MakeUnique<int>(allocator, 3);
 
         REQUIRE(*valueA == 1);
         REQUIRE(*valueB == 2);
@@ -234,11 +234,11 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
     {
         IC::BuddyAllocator allocator(256, 16);
 
-        auto valueA = IC::makeUnique<int>(allocator, 1);
-        auto valueB = IC::makeUnique<int>(allocator, 2);
+        auto valueA = IC::MakeUnique<int>(allocator, 1);
+        auto valueB = IC::MakeUnique<int>(allocator, 2);
         valueB.reset();
-        auto valueC = IC::makeUnique<int>(allocator, 3);
-        valueB = IC::makeUnique<int>(allocator, 4);
+        auto valueC = IC::MakeUnique<int>(allocator, 3);
+        valueB = IC::MakeUnique<int>(allocator, 4);
 
         REQUIRE(*valueA == 1);
         REQUIRE(*valueB == 4);
@@ -258,7 +258,7 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto value = IC::makeUnique<LargeExampleClass>(allocator);
+        auto value = IC::MakeUnique<LargeExampleClass>(allocator);
         memcpy(value->buffer, k_exampleBuffer, 128);
 
         REQUIRE(strcmp(k_exampleBuffer, value->buffer) == 0);
@@ -284,19 +284,19 @@ TEST_CASE("BuddyAllocator", "[Allocator]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto valueA = IC::makeUnique<int>(allocator, 1);
+        auto valueA = IC::MakeUnique<int>(allocator, 1);
 
-        auto valueB = IC::makeUnique<LargeExampleClass>(allocator);
+        auto valueB = IC::MakeUnique<LargeExampleClass>(allocator);
         memcpy(valueB->buffer, k_exampleBuffer, 64);
 
-        valueA = IC::makeUnique<int>(allocator, 2);
+        valueA = IC::MakeUnique<int>(allocator, 2);
 
-        auto valueC = IC::makeUnique<MediumExampleClass>(allocator);
+        auto valueC = IC::MakeUnique<MediumExampleClass>(allocator);
         valueC->m_x = 5;
         valueC->m_y = 10;
         valueC->m_z = 15;
 
-        valueA = IC::makeUnique<int>(allocator, 3);
+        valueA = IC::MakeUnique<int>(allocator, 3);
 
         REQUIRE(*valueA == 3);
         REQUIRE(strcmp(k_exampleBuffer, valueB->buffer) == 0);

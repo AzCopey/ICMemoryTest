@@ -35,9 +35,9 @@ TEST_CASE("LinearAllocator", "[Allocator]")
     SECTION("UniqueFundamental", "[LinearAllocator]")
     {
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::makeUnique<int>(LinearAllocator);
+        auto allocated = IC::MakeUnique<int>(linearAllocator);
         *allocated = 1;
 
         REQUIRE(*allocated == 1);
@@ -48,9 +48,9 @@ TEST_CASE("LinearAllocator", "[Allocator]")
     SECTION("UniqueFundamentalInitialValue", "[LinearAllocator]")
     {
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::makeUnique<int>(LinearAllocator, 1);
+        auto allocated = IC::MakeUnique<int>(linearAllocator, 1);
 
         REQUIRE(*allocated == 1);
     }
@@ -65,9 +65,9 @@ TEST_CASE("LinearAllocator", "[Allocator]")
         };
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::makeUnique<ExampleClass>(LinearAllocator);
+        auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator);
         allocated->m_x = 1;
         allocated->m_y = 2;
 
@@ -86,9 +86,9 @@ TEST_CASE("LinearAllocator", "[Allocator]")
         };
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::makeUnique<ExampleClass>(LinearAllocator, 1, 2);
+        auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator, 1, 2);
 
         REQUIRE(allocated->m_x == 1);
         REQUIRE(allocated->m_y == 2);
@@ -108,9 +108,9 @@ TEST_CASE("LinearAllocator", "[Allocator]")
         exampleClass.m_y = 2;
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::makeUnique<ExampleClass>(LinearAllocator, exampleClass);
+        auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator, exampleClass);
 
         REQUIRE(allocated->m_x == 1);
         REQUIRE(allocated->m_y == 2);
@@ -123,9 +123,9 @@ TEST_CASE("LinearAllocator", "[Allocator]")
         const int k_numValues = 10;
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::makeUniqueArray<int>(LinearAllocator, 10);
+        auto allocated = IC::MakeUniqueArray<int>(linearAllocator, 10);
 
         for (auto i = 0; i < k_numValues; ++i)
         {
@@ -143,9 +143,9 @@ TEST_CASE("LinearAllocator", "[Allocator]")
     SECTION("SharedFundamental", "[LinearAllocator]")
     {
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::makeShared<int>(LinearAllocator);
+        auto allocated = IC::MakeShared<int>(linearAllocator);
         *allocated = 1;
 
         REQUIRE(*allocated == 1);
@@ -156,9 +156,9 @@ TEST_CASE("LinearAllocator", "[Allocator]")
     SECTION("SharedFundamentalInitialValue", "[LinearAllocator]")
     {
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::makeShared<int>(LinearAllocator, 1);
+        auto allocated = IC::MakeShared<int>(linearAllocator, 1);
 
         REQUIRE(*allocated == 1);
     }
@@ -173,9 +173,9 @@ TEST_CASE("LinearAllocator", "[Allocator]")
         };
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::makeShared<ExampleClass>(LinearAllocator);
+        auto allocated = IC::MakeShared<ExampleClass>(linearAllocator);
         allocated->m_x = 1;
         allocated->m_y = 2;
 
@@ -194,9 +194,9 @@ TEST_CASE("LinearAllocator", "[Allocator]")
         };
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::makeShared<ExampleClass>(LinearAllocator, 1, 2);
+        auto allocated = IC::MakeShared<ExampleClass>(linearAllocator, 1, 2);
 
         REQUIRE(allocated->m_x == 1);
         REQUIRE(allocated->m_y == 2);
@@ -216,9 +216,9 @@ TEST_CASE("LinearAllocator", "[Allocator]")
         exampleClass.m_y = 2;
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::makeShared<ExampleClass>(LinearAllocator, exampleClass);
+        auto allocated = IC::MakeShared<ExampleClass>(linearAllocator, exampleClass);
 
         REQUIRE(allocated->m_x == 1);
         REQUIRE(allocated->m_y == 2);
@@ -229,11 +229,11 @@ TEST_CASE("LinearAllocator", "[Allocator]")
     SECTION("MultipleObjects", "[LinearAllocator]")
     {
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto valueA = IC::makeUnique<int>(LinearAllocator, 1);
-        auto valueB = IC::makeUnique<int>(LinearAllocator, 2);
-        auto valueC = IC::makeUnique<int>(LinearAllocator, 3);
+        auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
+        auto valueB = IC::MakeUnique<int>(linearAllocator, 2);
+        auto valueC = IC::MakeUnique<int>(linearAllocator, 3);
 
         REQUIRE(*valueA == 1);
         REQUIRE(*valueB == 2);
@@ -245,13 +245,13 @@ TEST_CASE("LinearAllocator", "[Allocator]")
     SECTION("Deallocation", "[LinearAllocator]")
     {
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto valueA = IC::makeUnique<int>(LinearAllocator, 1);
-        auto valueB = IC::makeUnique<int>(LinearAllocator, 2);
+        auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
+        auto valueB = IC::MakeUnique<int>(linearAllocator, 2);
         valueB.reset();
-        auto valueC = IC::makeUnique<int>(LinearAllocator, 3);
-        valueB = IC::makeUnique<int>(LinearAllocator, 4);
+        auto valueC = IC::MakeUnique<int>(linearAllocator, 3);
+        valueB = IC::MakeUnique<int>(linearAllocator, 4);
 
         REQUIRE(*valueA == 1);
         REQUIRE(*valueB == 4);
@@ -277,21 +277,21 @@ TEST_CASE("LinearAllocator", "[Allocator]")
         };
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 64);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto valueA = IC::makeUnique<int>(LinearAllocator, 1);
+        auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
 
-        auto valueB = IC::makeUnique<LargeExampleClass>(LinearAllocator);
+        auto valueB = IC::MakeUnique<LargeExampleClass>(linearAllocator);
         memcpy(valueB->buffer, k_exampleBuffer, 10);
 
-        valueA = IC::makeUnique<int>(LinearAllocator, 2);
+        valueA = IC::MakeUnique<int>(linearAllocator, 2);
 
-        auto valueC = IC::makeUnique<MediumExampleClass>(LinearAllocator);
+        auto valueC = IC::MakeUnique<MediumExampleClass>(linearAllocator);
         valueC->m_x = 5;
         valueC->m_y = 10;
         valueC->m_z = 15;
 
-        valueA = IC::makeUnique<int>(LinearAllocator, 3);
+        valueA = IC::MakeUnique<int>(linearAllocator, 3);
 
         REQUIRE(*valueA == 3);
         REQUIRE(strcmp(k_exampleBuffer, valueB->buffer) == 0);
@@ -305,13 +305,13 @@ TEST_CASE("LinearAllocator", "[Allocator]")
     SECTION("Paging", "[LinearAllocator]")
     {
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
 
-        auto valueA = IC::makeUnique<std::uint64_t>(LinearAllocator, 1);
-        auto valueB = IC::makeUnique<std::uint64_t>(LinearAllocator, 2);
-        auto valueC = IC::makeUnique<std::uint64_t>(LinearAllocator, 3);
-        auto valueD = IC::makeUnique<std::uint64_t>(LinearAllocator, 4);
-        auto valueE = IC::makeUnique<std::uint64_t>(LinearAllocator, 5);
+        auto valueA = IC::MakeUnique<std::uint64_t>(linearAllocator, 1);
+        auto valueB = IC::MakeUnique<std::uint64_t>(linearAllocator, 2);
+        auto valueC = IC::MakeUnique<std::uint64_t>(linearAllocator, 3);
+        auto valueD = IC::MakeUnique<std::uint64_t>(linearAllocator, 4);
+        auto valueE = IC::MakeUnique<std::uint64_t>(linearAllocator, 5);
 
         REQUIRE(*valueA == 1);
         REQUIRE(*valueB == 2);
@@ -325,15 +325,15 @@ TEST_CASE("LinearAllocator", "[Allocator]")
     SECTION("Reset", "[LinearAllocator]")
     {
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
 
-        auto value = IC::makeUnique<std::uint64_t>(LinearAllocator, 1);
+        auto value = IC::MakeUnique<std::uint64_t>(linearAllocator, 1);
         auto valueARaw = value.get();
         value.reset();
 
-        LinearAllocator.reset();
+        linearAllocator.Reset();
 
-        value = IC::makeUnique<std::uint64_t>(LinearAllocator, 2);
+        value = IC::MakeUnique<std::uint64_t>(linearAllocator, 2);
         auto valueBRaw = value.get();
 
         REQUIRE(*value == 2);

@@ -37,7 +37,7 @@ TEST_CASE("Vector", "[Container]")
     {
         IC::BuddyAllocator allocator(256, 16);
 
-        auto vec = IC::makeVector<int>(allocator);
+        auto vec = IC::MakeVector<int>(allocator);
 
         vec.push_back(5);
         vec.push_back(6);
@@ -52,9 +52,9 @@ TEST_CASE("Vector", "[Container]")
     SECTION("MakeEmptyLinearAllocator")
     {
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
 
-        auto vec = IC::makeVector<int>(LinearAllocator);
+        auto vec = IC::MakeVector<int>(linearAllocator);
 
         vec.push_back(5);
         vec.push_back(6);
@@ -72,7 +72,7 @@ TEST_CASE("Vector", "[Container]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto vec = IC::makeVector<int>(allocator, toCopy.begin(), toCopy.end());
+        auto vec = IC::MakeVector<int>(allocator, toCopy.begin(), toCopy.end());
 
         REQUIRE(vec.size() == 2);
         REQUIRE(vec[0] == 5);
@@ -86,9 +86,9 @@ TEST_CASE("Vector", "[Container]")
         const std::vector<int> toCopy = { 5, 6 };
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
 
-        auto vec = IC::makeVector<int>(LinearAllocator, toCopy.begin(), toCopy.end());
+        auto vec = IC::MakeVector<int>(linearAllocator, toCopy.begin(), toCopy.end());
 
         REQUIRE(vec.size() == 2);
         REQUIRE(vec[0] == 5);
@@ -103,7 +103,7 @@ TEST_CASE("Vector", "[Container]")
 
         IC::BuddyAllocator allocator(256, 16);
 
-        auto vec = IC::makeVector<int>(allocator, toCopy);
+        auto vec = IC::MakeVector<int>(allocator, toCopy);
 
         REQUIRE(vec.size() == 2);
         REQUIRE(vec[0] == 5);
@@ -117,9 +117,9 @@ TEST_CASE("Vector", "[Container]")
         const std::vector<int> toCopy = { 5, 6 };
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
+        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
 
-        auto vec = IC::makeVector<int>(LinearAllocator, toCopy);
+        auto vec = IC::MakeVector<int>(linearAllocator, toCopy);
 
         REQUIRE(vec.size() == 2);
         REQUIRE(vec[0] == 5);
