@@ -45,6 +45,21 @@
     <ClCompile Include="Tests\LinearAllocatorTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\UnorderedSetTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\QueueTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\DequeTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\UnorderedMapTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\StackTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ICMemory\BuddyAllocator.h">
@@ -360,6 +375,21 @@
       <Filter>ICMemory</Filter>
     </ClInclude>
     <ClInclude Include="ICMemory\LinearAllocator.h">
+      <Filter>ICMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\UnorderedSet.h">
+      <Filter>ICMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Queue.h">
+      <Filter>ICMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\UnorderedMap.h">
+      <Filter>ICMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Deque.h">
+      <Filter>ICMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Stack.h">
       <Filter>ICMemory</Filter>
     </ClInclude>
   </ItemGroup>

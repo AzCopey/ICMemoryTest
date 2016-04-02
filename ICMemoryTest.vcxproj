@@ -23,9 +23,14 @@
     <ClCompile Include="ICMemory\LinearAllocator.cpp" />
     <ClCompile Include="ICMemory\String.cpp" />
     <ClCompile Include="Tests\BuddyAllocatorTest.cpp" />
+    <ClCompile Include="Tests\DequeTest.cpp" />
     <ClCompile Include="Tests\LinearAllocatorTest.cpp" />
     <ClCompile Include="Tests\Main.cpp" />
+    <ClCompile Include="Tests\QueueTest.cpp" />
+    <ClCompile Include="Tests\StackTest.cpp" />
     <ClCompile Include="Tests\StringTest.cpp" />
+    <ClCompile Include="Tests\UnorderedMapTest.cpp" />
+    <ClCompile Include="Tests\UnorderedSetTest.cpp" />
     <ClCompile Include="Tests\VectorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -124,13 +129,18 @@
     <ClInclude Include="Catch\include\reporters\catch_reporter_teamcity.hpp" />
     <ClInclude Include="Catch\include\reporters\catch_reporter_xml.hpp" />
     <ClInclude Include="ICMemory\BuddyAllocator.h" />
+    <ClInclude Include="ICMemory\Deque.h" />
     <ClInclude Include="ICMemory\ForwardDeclarations.h" />
     <ClInclude Include="ICMemory\LinearAllocator.h" />
     <ClInclude Include="ICMemory\IAllocator.h" />
     <ClInclude Include="ICMemory\ICMemory.h" />
+    <ClInclude Include="ICMemory\Queue.h" />
+    <ClInclude Include="ICMemory\Stack.h" />
     <ClInclude Include="ICMemory\String.h" />
     <ClInclude Include="ICMemory\SharedPtr.h" />
     <ClInclude Include="ICMemory\UniquePtr.h" />
+    <ClInclude Include="ICMemory\UnorderedMap.h" />
+    <ClInclude Include="ICMemory\UnorderedSet.h" />
     <ClInclude Include="ICMemory\Vector.h" />
     <ClInclude Include="ICMemory\MemoryUtils.h" />
     <ClInclude Include="ICMemory\AllocatorWrapper.h" />

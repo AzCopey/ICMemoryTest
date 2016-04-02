@@ -25,7 +25,7 @@
 #include "../ICMemory/ICMemory.h"
 
 #include <catch.hpp>
-#include <vector>
+#include <deque>
 
 namespace ICMemoryTest
 {
@@ -36,101 +36,113 @@ namespace ICMemoryTest
         constexpr std::size_t k_linearAllocatorPageSize = 512;
     }
 
-    /// A series of unit tests for vectors allocated from the memory pools.
+    /// A series of unit tests for deques allocated from the memory pools.
     ///
-    TEST_CASE("Vector", "[Container]")
+    TEST_CASE("Deque", "[Container]")
     {
-        /// Confirms that an empty vector can be allocated from the Buddy Allocator.
+        /// Confirms that an empty deque can be allocated from the Buddy Allocator.
         ///
         SECTION("MakeEmptyBuddyAllocator")
         {
             IC::BuddyAllocator allocator(k_buddyAllocatorBufferSize, k_buddyAllocatorMinBlockSize);
 
-            auto vec = IC::MakeVector<int>(allocator);
-            vec.push_back(5);
-            vec.push_back(6);
+            auto deque = IC::MakeDeque<int>(allocator);
+            deque.push_back(5);
+            deque.push_back(6);
 
-            REQUIRE(vec.size() == 2);
-            REQUIRE(vec[0] == 5);
-            REQUIRE(vec[1] == 6);
+            REQUIRE(deque.size() == 2);
+            REQUIRE(deque.front() == 5);
+
+            deque.pop_front();
+            REQUIRE(deque.front() == 6);
         }
 
-        /// Confirms that an empty vector can be allocated from the Linear Allocator.
+        /// Confirms that an empty deque can be allocated from the Linear Allocator.
         ///
         SECTION("MakeEmptyLinearAllocator")
         {
             IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
             IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
 
-            auto vec = IC::MakeVector<int>(linearAllocator);
-            vec.push_back(5);
-            vec.push_back(6);
+            auto deque = IC::MakeDeque<int>(linearAllocator);
+            deque.push_back(5);
+            deque.push_back(6);
 
-            REQUIRE(vec.size() == 2);
-            REQUIRE(vec[0] == 5);
-            REQUIRE(vec[1] == 6);
+            REQUIRE(deque.size() == 2);
+            REQUIRE(deque.front() == 5);
+
+            deque.pop_front();
+            REQUIRE(deque.front() == 6);
         }
 
-        /// Confirms that a vector can be allocated from the Buddy Allocator with a range.
+        /// Confirms that a deque can be allocated from the Buddy Allocator with a range.
         ///
         SECTION("MakeRangeBuddyAllocator")
         {
-            const std::vector<int> toCopy = { 5, 6 };
+            const std::deque<int> toCopy = { 5, 6 };
 
             IC::BuddyAllocator allocator(k_buddyAllocatorBufferSize, k_buddyAllocatorMinBlockSize);
 
-            auto vec = IC::MakeVector<int>(allocator, toCopy.begin(), toCopy.end());
+            auto deque = IC::MakeDeque<int>(allocator, toCopy.begin(), toCopy.end());
 
-            REQUIRE(vec.size() == 2);
-            REQUIRE(vec[0] == 5);
-            REQUIRE(vec[1] == 6);
+            REQUIRE(deque.size() == 2);
+            REQUIRE(deque.front() == 5);
+
+            deque.pop_front();
+            REQUIRE(deque.front() == 6);
         }
 
-        /// Confirms that a vector can be allocated from the Linear Allocator with a range.
+        /// Confirms that a deque can be allocated from the Linear Allocator with a range.
         ///
         SECTION("MakeRangeLinearAllocator")
         {
-            const std::vector<int> toCopy = { 5, 6 };
+            const std::deque<int> toCopy = { 5, 6 };
 
             IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
             IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
 
-            auto vec = IC::MakeVector<int>(linearAllocator, toCopy.begin(), toCopy.end());
+            auto deque = IC::MakeDeque<int>(linearAllocator, toCopy.begin(), toCopy.end());
 
-            REQUIRE(vec.size() == 2);
-            REQUIRE(vec[0] == 5);
-            REQUIRE(vec[1] == 6);
+            REQUIRE(deque.size() == 2);
+            REQUIRE(deque.front() == 5);
+
+            deque.pop_front();
+            REQUIRE(deque.front() == 6);
         }
 
-        /// Confirms that a vector can be allocated from the Buddy Allocator using a std::vector.
+        /// Confirms that a deque can be allocated from the Buddy Allocator using a std::deque.
         ///
-        SECTION("MakeStdVectorBuddyAllocator")
+        SECTION("MakeStdDequeBuddyAllocator")
         {
-            const std::vector<int> toCopy = { 5, 6 };
+            const std::deque<int> toCopy = { 5, 6 };
 
             IC::BuddyAllocator allocator(k_buddyAllocatorBufferSize, k_buddyAllocatorMinBlockSize);
 
-            auto vec = IC::MakeVector<int>(allocator, toCopy);
+            auto deque = IC::MakeDeque<int>(allocator, toCopy);
 
-            REQUIRE(vec.size() == 2);
-            REQUIRE(vec[0] == 5);
-            REQUIRE(vec[1] == 6);
+            REQUIRE(deque.size() == 2);
+            REQUIRE(deque.front() == 5);
+
+            deque.pop_front();
+            REQUIRE(deque.front() == 6);
         }
 
-        /// Confirms that a vector can be allocated from the Linear Allocator using a std::vector.
+        /// Confirms that a deque can be allocated from the Linear Allocator using a std::deque.
         ///
-        SECTION("MakeStdVectorLinearAllocator")
+        SECTION("MakeStdDequeLinearAllocator")
         {
-            const std::vector<int> toCopy = { 5, 6 };
+            const std::deque<int> toCopy = { 5, 6 };
 
             IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
             IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
 
-            auto vec = IC::MakeVector<int>(linearAllocator, toCopy);
+            auto deque = IC::MakeDeque<int>(linearAllocator, toCopy);
 
-            REQUIRE(vec.size() == 2);
-            REQUIRE(vec[0] == 5);
-            REQUIRE(vec[1] == 6);
+            REQUIRE(deque.size() == 2);
+            REQUIRE(deque.front() == 5);
+
+            deque.pop_front();
+            REQUIRE(deque.front() == 6);
         }
     }
 }

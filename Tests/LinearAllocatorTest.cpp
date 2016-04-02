@@ -26,317 +26,320 @@
 
 #include <catch.hpp>
 
-/// A series of tests for the LinearAllocator
-///
-TEST_CASE("LinearAllocator", "[Allocator]")
+namespace ICMemoryTest
 {
-    /// Confirms that a unique pointer to a fundamental can be allocated from a LinearAllocator.
+    /// A series of tests for the LinearAllocator
     ///
-    SECTION("UniqueFundamental", "[LinearAllocator]")
+    TEST_CASE("LinearAllocator", "[Allocator]")
     {
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
-
-        auto allocated = IC::MakeUnique<int>(linearAllocator);
-        *allocated = 1;
-
-        REQUIRE(*allocated == 1);
-    }
-
-    /// Confirms that a unique pointer to a fundamental with an initial value can be allocated from a LinearAllocator.
-    ///
-    SECTION("UniqueFundamentalInitialValue", "[LinearAllocator]")
-    {
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
-
-        auto allocated = IC::MakeUnique<int>(linearAllocator, 1);
-
-        REQUIRE(*allocated == 1);
-    }
-
-    /// Confirms that a unique pointer to a struct instance can be allocated from a LinearAllocator.
-    ///
-    SECTION("UniqueStruct", "[LinearAllocator]")
-    {
-        struct ExampleClass
+        /// Confirms that a unique pointer to a fundamental can be allocated from a LinearAllocator.
+        ///
+        SECTION("UniqueFundamental", "[LinearAllocator]")
         {
-            int m_x, m_y;
-        };
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            auto allocated = IC::MakeUnique<int>(linearAllocator);
+            *allocated = 1;
 
-        auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator);
-        allocated->m_x = 1;
-        allocated->m_y = 2;
-
-        REQUIRE(allocated->m_x == 1);
-        REQUIRE(allocated->m_y == 2);
-    }
-
-    /// Confirms that a unique pointer to a struct instance with a constructor can be allocated from a LinearAllocator.
-    ///
-    SECTION("UniqueStructConstructor", "[LinearAllocator]")
-    {
-        struct ExampleClass
-        {
-            ExampleClass(int x, int y) : m_x(x), m_y(y) {}
-            int m_x, m_y;
-        };
-
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
-
-        auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator, 1, 2);
-
-        REQUIRE(allocated->m_x == 1);
-        REQUIRE(allocated->m_y == 2);
-    }
-
-    /// Confirms that a unique pointer to a struct instance can be copy constructed from a LinearAllocator.
-    ///
-    SECTION("UniqueStructCopyConstructor", "[LinearAllocator]")
-    {
-        struct ExampleClass
-        {
-            int m_x, m_y;
-        };
-
-        ExampleClass exampleClass;
-        exampleClass.m_x = 1;
-        exampleClass.m_y = 2;
-
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
-
-        auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator, exampleClass);
-
-        REQUIRE(allocated->m_x == 1);
-        REQUIRE(allocated->m_y == 2);
-    }
-
-    /// Confirms that a unique pointer to an array can be allocated from a LinearAllocator.
-    ///
-    SECTION("UniqueArray", "[LinearAllocator]")
-    {
-        const int k_numValues = 10;
-
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
-
-        auto allocated = IC::MakeUniqueArray<int>(linearAllocator, 10);
-
-        for (auto i = 0; i < k_numValues; ++i)
-        {
-            allocated[i] = i;
+            REQUIRE(*allocated == 1);
         }
 
-        for (auto i = 0; i < k_numValues; ++i)
+        /// Confirms that a unique pointer to a fundamental with an initial value can be allocated from a LinearAllocator.
+        ///
+        SECTION("UniqueFundamentalInitialValue", "[LinearAllocator]")
         {
-            REQUIRE(allocated[i] == i);
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+
+            auto allocated = IC::MakeUnique<int>(linearAllocator, 1);
+
+            REQUIRE(*allocated == 1);
         }
-    }
 
-    /// Confirms that a shared pointer to a fundamental can be allocated from a LinearAllocator.
-    ///
-    SECTION("SharedFundamental", "[LinearAllocator]")
-    {
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
-
-        auto allocated = IC::MakeShared<int>(linearAllocator);
-        *allocated = 1;
-
-        REQUIRE(*allocated == 1);
-    }
-
-    /// Confirms that a shared pointer to a fundamental with an initial value can be allocated from a LinearAllocator.
-    ///
-    SECTION("SharedFundamentalInitialValue", "[LinearAllocator]")
-    {
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
-
-        auto allocated = IC::MakeShared<int>(linearAllocator, 1);
-
-        REQUIRE(*allocated == 1);
-    }
-
-    /// Confirms that a shared pointer to a struct instance can be allocated from a LinearAllocator.
-    ///
-    SECTION("SharedStruct", "[LinearAllocator]")
-    {
-        struct ExampleClass
+        /// Confirms that a unique pointer to a struct instance can be allocated from a LinearAllocator.
+        ///
+        SECTION("UniqueStruct", "[LinearAllocator]")
         {
-            int m_x, m_y;
-        };
+            struct ExampleClass
+            {
+                int m_x, m_y;
+            };
 
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::MakeShared<ExampleClass>(linearAllocator);
-        allocated->m_x = 1;
-        allocated->m_y = 2;
+            auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator);
+            allocated->m_x = 1;
+            allocated->m_y = 2;
 
-        REQUIRE(allocated->m_x == 1);
-        REQUIRE(allocated->m_y == 2);
-    }
+            REQUIRE(allocated->m_x == 1);
+            REQUIRE(allocated->m_y == 2);
+        }
 
-    /// Confirms that a shared pointer to a struct instance with a constructor can be allocated from a LinearAllocator.
-    ///
-    SECTION("SharedStructConstructor", "[LinearAllocator]")
-    {
-        struct ExampleClass
+        /// Confirms that a unique pointer to a struct instance with a constructor can be allocated from a LinearAllocator.
+        ///
+        SECTION("UniqueStructConstructor", "[LinearAllocator]")
         {
-            ExampleClass(int x, int y) : m_x(x), m_y(y) {}
-            int m_x, m_y;
-        };
+            struct ExampleClass
+            {
+                ExampleClass(int x, int y) : m_x(x), m_y(y) {}
+                int m_x, m_y;
+            };
 
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::MakeShared<ExampleClass>(linearAllocator, 1, 2);
+            auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator, 1, 2);
 
-        REQUIRE(allocated->m_x == 1);
-        REQUIRE(allocated->m_y == 2);
-    }
+            REQUIRE(allocated->m_x == 1);
+            REQUIRE(allocated->m_y == 2);
+        }
 
-    /// Confirms that a shared pointer to a struct instance can be copy constructed from a LinearAllocator.
-    ///
-    SECTION("SharedStructCopyConstructor", "[LinearAllocator]")
-    {
-        struct ExampleClass
+        /// Confirms that a unique pointer to a struct instance can be copy constructed from a LinearAllocator.
+        ///
+        SECTION("UniqueStructCopyConstructor", "[LinearAllocator]")
         {
-            int m_x, m_y;
-        };
+            struct ExampleClass
+            {
+                int m_x, m_y;
+            };
 
-        ExampleClass exampleClass;
-        exampleClass.m_x = 1;
-        exampleClass.m_y = 2;
+            ExampleClass exampleClass;
+            exampleClass.m_x = 1;
+            exampleClass.m_y = 2;
 
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto allocated = IC::MakeShared<ExampleClass>(linearAllocator, exampleClass);
+            auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator, exampleClass);
 
-        REQUIRE(allocated->m_x == 1);
-        REQUIRE(allocated->m_y == 2);
-    }
+            REQUIRE(allocated->m_x == 1);
+            REQUIRE(allocated->m_y == 2);
+        }
 
-    /// Confirms that multiple objects can be allocated from a LinearAllocator.
-    ///
-    SECTION("MultipleObjects", "[LinearAllocator]")
-    {
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
-
-        auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
-        auto valueB = IC::MakeUnique<int>(linearAllocator, 2);
-        auto valueC = IC::MakeUnique<int>(linearAllocator, 3);
-
-        REQUIRE(*valueA == 1);
-        REQUIRE(*valueB == 2);
-        REQUIRE(*valueC == 3);
-    }
-
-    /// Confirms that deallocating an object allocated from a LinearAllocator does not affect other allocations.
-    ///
-    SECTION("Deallocation", "[LinearAllocator]")
-    {
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
-
-        auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
-        auto valueB = IC::MakeUnique<int>(linearAllocator, 2);
-        valueB.reset();
-        auto valueC = IC::MakeUnique<int>(linearAllocator, 3);
-        valueB = IC::MakeUnique<int>(linearAllocator, 4);
-
-        REQUIRE(*valueA == 1);
-        REQUIRE(*valueB == 4);
-        REQUIRE(*valueC == 3);
-    }
-
-    /// Confirms that objects of varying size can be allocated from a LinearAllocator.
-    ///
-    SECTION("VaryingSizedObjects", "[LinearAllocator]")
-    {
-        const char* k_exampleBuffer = "123456789\0";
-
-        struct LargeExampleClass
+        /// Confirms that a unique pointer to an array can be allocated from a LinearAllocator.
+        ///
+        SECTION("UniqueArray", "[LinearAllocator]")
         {
-            char buffer[10];
-        };
+            const int k_numValues = 10;
 
-        struct MediumExampleClass
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+
+            auto allocated = IC::MakeUniqueArray<int>(linearAllocator, 10);
+
+            for (auto i = 0; i < k_numValues; ++i)
+            {
+                allocated[i] = i;
+            }
+
+            for (auto i = 0; i < k_numValues; ++i)
+            {
+                REQUIRE(allocated[i] == i);
+            }
+        }
+
+        /// Confirms that a shared pointer to a fundamental can be allocated from a LinearAllocator.
+        ///
+        SECTION("SharedFundamental", "[LinearAllocator]")
         {
-            std::int64_t m_x;
-            std::int64_t m_y;
-            std::int64_t m_z;
-        };
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            auto allocated = IC::MakeShared<int>(linearAllocator);
+            *allocated = 1;
 
-        auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
+            REQUIRE(*allocated == 1);
+        }
 
-        auto valueB = IC::MakeUnique<LargeExampleClass>(linearAllocator);
-        memcpy(valueB->buffer, k_exampleBuffer, 10);
+        /// Confirms that a shared pointer to a fundamental with an initial value can be allocated from a LinearAllocator.
+        ///
+        SECTION("SharedFundamentalInitialValue", "[LinearAllocator]")
+        {
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        valueA = IC::MakeUnique<int>(linearAllocator, 2);
+            auto allocated = IC::MakeShared<int>(linearAllocator, 1);
 
-        auto valueC = IC::MakeUnique<MediumExampleClass>(linearAllocator);
-        valueC->m_x = 5;
-        valueC->m_y = 10;
-        valueC->m_z = 15;
+            REQUIRE(*allocated == 1);
+        }
 
-        valueA = IC::MakeUnique<int>(linearAllocator, 3);
+        /// Confirms that a shared pointer to a struct instance can be allocated from a LinearAllocator.
+        ///
+        SECTION("SharedStruct", "[LinearAllocator]")
+        {
+            struct ExampleClass
+            {
+                int m_x, m_y;
+            };
 
-        REQUIRE(*valueA == 3);
-        REQUIRE(strcmp(k_exampleBuffer, valueB->buffer) == 0);
-        REQUIRE(valueC->m_x == 5);
-        REQUIRE(valueC->m_y == 10);
-        REQUIRE(valueC->m_z == 15);
-    }
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-    /// Confirms that a new page can be successfully created if there is not enough room left in the current page.
-    ///
-    SECTION("Paging", "[LinearAllocator]")
-    {
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
+            auto allocated = IC::MakeShared<ExampleClass>(linearAllocator);
+            allocated->m_x = 1;
+            allocated->m_y = 2;
 
-        auto valueA = IC::MakeUnique<std::uint64_t>(linearAllocator, 1);
-        auto valueB = IC::MakeUnique<std::uint64_t>(linearAllocator, 2);
-        auto valueC = IC::MakeUnique<std::uint64_t>(linearAllocator, 3);
-        auto valueD = IC::MakeUnique<std::uint64_t>(linearAllocator, 4);
-        auto valueE = IC::MakeUnique<std::uint64_t>(linearAllocator, 5);
+            REQUIRE(allocated->m_x == 1);
+            REQUIRE(allocated->m_y == 2);
+        }
 
-        REQUIRE(*valueA == 1);
-        REQUIRE(*valueB == 2);
-        REQUIRE(*valueC == 3);
-        REQUIRE(*valueD == 4);
-        REQUIRE(*valueE == 5);
-    }
+        /// Confirms that a shared pointer to a struct instance with a constructor can be allocated from a LinearAllocator.
+        ///
+        SECTION("SharedStructConstructor", "[LinearAllocator]")
+        {
+            struct ExampleClass
+            {
+                ExampleClass(int x, int y) : m_x(x), m_y(y) {}
+                int m_x, m_y;
+            };
 
-    /// Confirms that resetting a Linear Allocator will allow previous memory to be re-used.
-    ///
-    SECTION("Reset", "[LinearAllocator]")
-    {
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
 
-        auto value = IC::MakeUnique<std::uint64_t>(linearAllocator, 1);
-        auto valueARaw = value.get();
-        value.reset();
+            auto allocated = IC::MakeShared<ExampleClass>(linearAllocator, 1, 2);
 
-        linearAllocator.Reset();
+            REQUIRE(allocated->m_x == 1);
+            REQUIRE(allocated->m_y == 2);
+        }
 
-        value = IC::MakeUnique<std::uint64_t>(linearAllocator, 2);
-        auto valueBRaw = value.get();
+        /// Confirms that a shared pointer to a struct instance can be copy constructed from a LinearAllocator.
+        ///
+        SECTION("SharedStructCopyConstructor", "[LinearAllocator]")
+        {
+            struct ExampleClass
+            {
+                int m_x, m_y;
+            };
 
-        REQUIRE(*value == 2);
-        REQUIRE(valueARaw == valueBRaw);
+            ExampleClass exampleClass;
+            exampleClass.m_x = 1;
+            exampleClass.m_y = 2;
+
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+
+            auto allocated = IC::MakeShared<ExampleClass>(linearAllocator, exampleClass);
+
+            REQUIRE(allocated->m_x == 1);
+            REQUIRE(allocated->m_y == 2);
+        }
+
+        /// Confirms that multiple objects can be allocated from a LinearAllocator.
+        ///
+        SECTION("MultipleObjects", "[LinearAllocator]")
+        {
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+
+            auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
+            auto valueB = IC::MakeUnique<int>(linearAllocator, 2);
+            auto valueC = IC::MakeUnique<int>(linearAllocator, 3);
+
+            REQUIRE(*valueA == 1);
+            REQUIRE(*valueB == 2);
+            REQUIRE(*valueC == 3);
+        }
+
+        /// Confirms that deallocating an object allocated from a LinearAllocator does not affect other allocations.
+        ///
+        SECTION("Deallocation", "[LinearAllocator]")
+        {
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+
+            auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
+            auto valueB = IC::MakeUnique<int>(linearAllocator, 2);
+            valueB.reset();
+            auto valueC = IC::MakeUnique<int>(linearAllocator, 3);
+            valueB = IC::MakeUnique<int>(linearAllocator, 4);
+
+            REQUIRE(*valueA == 1);
+            REQUIRE(*valueB == 4);
+            REQUIRE(*valueC == 3);
+        }
+
+        /// Confirms that objects of varying size can be allocated from a LinearAllocator.
+        ///
+        SECTION("VaryingSizedObjects", "[LinearAllocator]")
+        {
+            const char* k_exampleBuffer = "123456789\0";
+
+            struct LargeExampleClass
+            {
+                char buffer[10];
+            };
+
+            struct MediumExampleClass
+            {
+                std::int64_t m_x;
+                std::int64_t m_y;
+                std::int64_t m_z;
+            };
+
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+
+            auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
+
+            auto valueB = IC::MakeUnique<LargeExampleClass>(linearAllocator);
+            memcpy(valueB->buffer, k_exampleBuffer, 10);
+
+            valueA = IC::MakeUnique<int>(linearAllocator, 2);
+
+            auto valueC = IC::MakeUnique<MediumExampleClass>(linearAllocator);
+            valueC->m_x = 5;
+            valueC->m_y = 10;
+            valueC->m_z = 15;
+
+            valueA = IC::MakeUnique<int>(linearAllocator, 3);
+
+            REQUIRE(*valueA == 3);
+            REQUIRE(strcmp(k_exampleBuffer, valueB->buffer) == 0);
+            REQUIRE(valueC->m_x == 5);
+            REQUIRE(valueC->m_y == 10);
+            REQUIRE(valueC->m_z == 15);
+        }
+
+        /// Confirms that a new page can be successfully created if there is not enough room left in the current page.
+        ///
+        SECTION("Paging", "[LinearAllocator]")
+        {
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 32);
+
+            auto valueA = IC::MakeUnique<std::uint64_t>(linearAllocator, 1);
+            auto valueB = IC::MakeUnique<std::uint64_t>(linearAllocator, 2);
+            auto valueC = IC::MakeUnique<std::uint64_t>(linearAllocator, 3);
+            auto valueD = IC::MakeUnique<std::uint64_t>(linearAllocator, 4);
+            auto valueE = IC::MakeUnique<std::uint64_t>(linearAllocator, 5);
+
+            REQUIRE(*valueA == 1);
+            REQUIRE(*valueB == 2);
+            REQUIRE(*valueC == 3);
+            REQUIRE(*valueD == 4);
+            REQUIRE(*valueE == 5);
+        }
+
+        /// Confirms that resetting a Linear Allocator will allow previous memory to be re-used.
+        ///
+        SECTION("Reset", "[LinearAllocator]")
+        {
+            IC::BuddyAllocator buddyAllocator(512);
+            IC::LinearAllocator linearAllocator(buddyAllocator, 32);
+
+            auto value = IC::MakeUnique<std::uint64_t>(linearAllocator, 1);
+            auto valueARaw = value.get();
+            value.reset();
+
+            linearAllocator.Reset();
+
+            value = IC::MakeUnique<std::uint64_t>(linearAllocator, 2);
+            auto valueBRaw = value.get();
+
+            REQUIRE(*value == 2);
+            REQUIRE(valueARaw == valueBRaw);
+        }
     }
 }

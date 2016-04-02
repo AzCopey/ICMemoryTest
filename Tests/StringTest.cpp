@@ -27,146 +27,156 @@
 #include <catch.hpp>
 #include <vector>
 
-/// A series of unit tests for strings allocated from the memory pools.
-///
-TEST_CASE("String", "[Container]")
+namespace ICMemoryTest
 {
-    /// Confirms that an empty string can be allocated from the Buddy Allocator.
-    ///
-    SECTION("MakeEmptyBuddyAllocator")
+    namespace
     {
-        constexpr char k_testString[] = "test";
-
-        IC::BuddyAllocator allocator(256, 16);
-
-        auto string = IC::MakeString(allocator);
-        string.append(k_testString);
-
-        REQUIRE(string == k_testString);
+        constexpr std::size_t k_buddyAllocatorBufferSize = 2048;
+        constexpr std::size_t k_buddyAllocatorMinBlockSize = 16;
+        constexpr std::size_t k_linearAllocatorPageSize = 512;
     }
 
-    /// Confirms that an empty string can be allocated from the Linear Allocator.
+    /// A series of unit tests for strings allocated from the memory pools.
     ///
-    SECTION("MakeEmptyLinearAllocator")
+    TEST_CASE("String", "[Container]")
     {
-        constexpr char k_testString[] = "test";
+        /// Confirms that an empty string can be allocated from the Buddy Allocator.
+        ///
+        SECTION("MakeEmptyBuddyAllocator")
+        {
+            constexpr char k_testString[] = "test";
 
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
+            IC::BuddyAllocator allocator(k_buddyAllocatorBufferSize, k_buddyAllocatorMinBlockSize);
 
-        auto string = IC::MakeString(linearAllocator);
-        string.append(k_testString);
+            auto string = IC::MakeString(allocator);
+            string.append(k_testString);
 
-        REQUIRE(string == k_testString);
-    }
+            REQUIRE(string == k_testString);
+        }
 
-    /// Confirms that a string can be allocated from the Buddy Allocator with a C string.
-    ///
-    SECTION("MakeCStringBuddyAllocator")
-    {
-        constexpr char k_testString[] = "test";
+        /// Confirms that an empty string can be allocated from the Linear Allocator.
+        ///
+        SECTION("MakeEmptyLinearAllocator")
+        {
+            constexpr char k_testString[] = "test";
 
-        IC::BuddyAllocator allocator(256, 16);
+            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
+            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
 
-        auto string = IC::MakeString(allocator, k_testString);
+            auto string = IC::MakeString(linearAllocator);
+            string.append(k_testString);
 
-        REQUIRE(string == k_testString);
-    }
+            REQUIRE(string == k_testString);
+        }
 
-    /// Confirms that a string can be allocated from the Linear Allocator with a C string.
-    ///
-    SECTION("MakeCStringLinearAllocator")
-    {
-        constexpr char k_testString[] = "test";
+        /// Confirms that a string can be allocated from the Buddy Allocator with a C string.
+        ///
+        SECTION("MakeCStringBuddyAllocator")
+        {
+            constexpr char k_testString[] = "test";
 
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
+            IC::BuddyAllocator allocator(k_buddyAllocatorBufferSize, k_buddyAllocatorMinBlockSize);
 
-        auto string = IC::MakeString(linearAllocator, k_testString);
+            auto string = IC::MakeString(allocator, k_testString);
 
-        REQUIRE(string == k_testString);
-    }
+            REQUIRE(string == k_testString);
+        }
 
-    /// Confirms that a string can be allocated from the Buddy Allocator with a buffer.
-    ///
-    SECTION("MakehBufferBuddyAllocator")
-    {
-        constexpr char k_testString[] = "test";
-        constexpr std::size_t k_bufferSize = 4;
+        /// Confirms that a string can be allocated from the Linear Allocator with a C string.
+        ///
+        SECTION("MakeCStringLinearAllocator")
+        {
+            constexpr char k_testString[] = "test";
 
-        IC::BuddyAllocator allocator(256, 16);
+            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
+            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
 
-        auto string = IC::MakeString(allocator, k_testString, k_bufferSize);
+            auto string = IC::MakeString(linearAllocator, k_testString);
 
-        REQUIRE(string == k_testString);
-    }
+            REQUIRE(string == k_testString);
+        }
 
-    /// Confirms that a string can be allocated from the Linear Allocator with a buffer.
-    ///
-    SECTION("MakeBufferLinearAllocator")
-    {
-        constexpr char k_testString[] = "test";
-        constexpr std::size_t k_bufferSize = 4;
+        /// Confirms that a string can be allocated from the Buddy Allocator with a buffer.
+        ///
+        SECTION("MakehBufferBuddyAllocator")
+        {
+            constexpr char k_testString[] = "test";
+            constexpr std::size_t k_bufferSize = 4;
 
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
+            IC::BuddyAllocator allocator(k_buddyAllocatorBufferSize, k_buddyAllocatorMinBlockSize);
 
-        auto string = IC::MakeString(linearAllocator, k_testString, k_bufferSize);
+            auto string = IC::MakeString(allocator, k_testString, k_bufferSize);
 
-        REQUIRE(string == k_testString);
-    }
+            REQUIRE(string == k_testString);
+        }
 
-    /// Confirms that a string can be allocated from the Buddy Allocator using a std::string.
-    ///
-    SECTION("MakeStdStringBuddyAllocator")
-    {
-        const std::string testString = "test";
+        /// Confirms that a string can be allocated from the Linear Allocator with a buffer.
+        ///
+        SECTION("MakeBufferLinearAllocator")
+        {
+            constexpr char k_testString[] = "test";
+            constexpr std::size_t k_bufferSize = 4;
 
-        IC::BuddyAllocator allocator(256, 16);
+            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
+            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
 
-        auto string = IC::MakeString(allocator, testString);
+            auto string = IC::MakeString(linearAllocator, k_testString, k_bufferSize);
 
-        REQUIRE(string == testString.c_str());
-    }
+            REQUIRE(string == k_testString);
+        }
 
-    /// Confirms that a string can be allocated from the Linear Allocator using a std::string.
-    ///
-    SECTION("MakeStdStringLinearAllocator")
-    {
-        const std::string testString = "test";
+        /// Confirms that a string can be allocated from the Buddy Allocator using a std::string.
+        ///
+        SECTION("MakeStdStringBuddyAllocator")
+        {
+            const std::string testString = "test";
 
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
+            IC::BuddyAllocator allocator(k_buddyAllocatorBufferSize, k_buddyAllocatorMinBlockSize);
 
-        auto string = IC::MakeString(linearAllocator, testString);
+            auto string = IC::MakeString(allocator, testString);
 
-        REQUIRE(string == testString.c_str());
-    }
+            REQUIRE(string == testString.c_str());
+        }
 
-    /// Confirms that a string can be allocated from the Buddy Allocator with a range.
-    ///
-    SECTION("MakeRangeBuddyAllocator")
-    {
-        const std::string testString = "test";
+        /// Confirms that a string can be allocated from the Linear Allocator using a std::string.
+        ///
+        SECTION("MakeStdStringLinearAllocator")
+        {
+            const std::string testString = "test";
 
-        IC::BuddyAllocator allocator(256, 16);
+            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
+            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
 
-        auto string = IC::MakeString(allocator, testString.begin(), testString.end());
+            auto string = IC::MakeString(linearAllocator, testString);
 
-        REQUIRE(string == testString.c_str());
-    }
+            REQUIRE(string == testString.c_str());
+        }
 
-    /// Confirms that a string can be allocated from the Linear Allocator with a range.
-    ///
-    SECTION("MakeRangeLinearAllocator")
-    {
-        const std::string testString = "test";
+        /// Confirms that a string can be allocated from the Buddy Allocator with a range.
+        ///
+        SECTION("MakeRangeBuddyAllocator")
+        {
+            const std::string testString = "test";
 
-        IC::BuddyAllocator buddyAllocator(512);
-        IC::LinearAllocator linearAllocator(buddyAllocator, 32);
+            IC::BuddyAllocator allocator(k_buddyAllocatorBufferSize, k_buddyAllocatorMinBlockSize);
 
-        auto string = IC::MakeString(linearAllocator, testString.begin(), testString.end());
+            auto string = IC::MakeString(allocator, testString.begin(), testString.end());
 
-        REQUIRE(string == testString.c_str());
+            REQUIRE(string == testString.c_str());
+        }
+
+        /// Confirms that a string can be allocated from the Linear Allocator with a range.
+        ///
+        SECTION("MakeRangeLinearAllocator")
+        {
+            const std::string testString = "test";
+
+            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
+            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
+
+            auto string = IC::MakeString(linearAllocator, testString.begin(), testString.end());
+
+            REQUIRE(string == testString.c_str());
+        }
     }
 }

@@ -25,7 +25,7 @@
 #include "../ICMemory/ICMemory.h"
 
 #include <catch.hpp>
-#include <vector>
+#include <set>
 
 namespace ICMemoryTest
 {
@@ -36,101 +36,101 @@ namespace ICMemoryTest
         constexpr std::size_t k_linearAllocatorPageSize = 512;
     }
 
-    /// A series of unit tests for vectors allocated from the memory pools.
+    /// A series of unit tests for sets allocated from the memory pools.
     ///
-    TEST_CASE("Vector", "[Container]")
+    TEST_CASE("UnorderedSet", "[Container]")
     {
-        /// Confirms that an empty vector can be allocated from the Buddy Allocator.
+        /// Confirms that an empty set can be allocated from the Buddy Allocator.
         ///
         SECTION("MakeEmptyBuddyAllocator")
         {
             IC::BuddyAllocator allocator(k_buddyAllocatorBufferSize, k_buddyAllocatorMinBlockSize);
 
-            auto vec = IC::MakeVector<int>(allocator);
-            vec.push_back(5);
-            vec.push_back(6);
+            auto set = IC::MakeUnorderedSet<int>(allocator);
+            set.insert(5);
+            set.insert(6);
 
-            REQUIRE(vec.size() == 2);
-            REQUIRE(vec[0] == 5);
-            REQUIRE(vec[1] == 6);
+            REQUIRE(set.size() == 2);
+            REQUIRE(set.find(5) != set.end());
+            REQUIRE(set.find(6) != set.end());
         }
 
-        /// Confirms that an empty vector can be allocated from the Linear Allocator.
+        /// Confirms that an empty set can be allocated from the Linear Allocator.
         ///
         SECTION("MakeEmptyLinearAllocator")
         {
             IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
             IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
 
-            auto vec = IC::MakeVector<int>(linearAllocator);
-            vec.push_back(5);
-            vec.push_back(6);
+            auto set = IC::MakeUnorderedSet<int>(linearAllocator);
+            set.insert(5);
+            set.insert(6);
 
-            REQUIRE(vec.size() == 2);
-            REQUIRE(vec[0] == 5);
-            REQUIRE(vec[1] == 6);
+            REQUIRE(set.size() == 2);
+            REQUIRE(set.find(5) != set.end());
+            REQUIRE(set.find(6) != set.end());
         }
 
-        /// Confirms that a vector can be allocated from the Buddy Allocator with a range.
+        /// Confirms that a set can be allocated from the Buddy Allocator with a range.
         ///
         SECTION("MakeRangeBuddyAllocator")
         {
-            const std::vector<int> toCopy = { 5, 6 };
+            const std::unordered_set<int> toCopy = { 5, 6 };
 
             IC::BuddyAllocator allocator(k_buddyAllocatorBufferSize, k_buddyAllocatorMinBlockSize);
 
-            auto vec = IC::MakeVector<int>(allocator, toCopy.begin(), toCopy.end());
+            auto set = IC::MakeUnorderedSet<int>(allocator, toCopy.begin(), toCopy.end());
 
-            REQUIRE(vec.size() == 2);
-            REQUIRE(vec[0] == 5);
-            REQUIRE(vec[1] == 6);
+            REQUIRE(set.size() == 2);
+            REQUIRE(set.find(5) != set.end());
+            REQUIRE(set.find(6) != set.end());
         }
 
-        /// Confirms that a vector can be allocated from the Linear Allocator with a range.
+        /// Confirms that a set can be allocated from the Linear Allocator with a range.
         ///
         SECTION("MakeRangeLinearAllocator")
         {
-            const std::vector<int> toCopy = { 5, 6 };
+            const std::unordered_set<int> toCopy = { 5, 6 };
 
             IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
             IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
 
-            auto vec = IC::MakeVector<int>(linearAllocator, toCopy.begin(), toCopy.end());
+            auto set = IC::MakeUnorderedSet<int>(linearAllocator, toCopy.begin(), toCopy.end());
 
-            REQUIRE(vec.size() == 2);
-            REQUIRE(vec[0] == 5);
-            REQUIRE(vec[1] == 6);
+            REQUIRE(set.size() == 2);
+            REQUIRE(set.find(5) != set.end());
+            REQUIRE(set.find(6) != set.end());
         }
 
-        /// Confirms that a vector can be allocated from the Buddy Allocator using a std::vector.
+        /// Confirms that a set can be allocated from the Buddy Allocator using a std::set.
         ///
-        SECTION("MakeStdVectorBuddyAllocator")
+        SECTION("MakeStdUnorderedSetBuddyAllocator")
         {
-            const std::vector<int> toCopy = { 5, 6 };
+            const std::unordered_set<int> toCopy = { 5, 6 };
 
             IC::BuddyAllocator allocator(k_buddyAllocatorBufferSize, k_buddyAllocatorMinBlockSize);
 
-            auto vec = IC::MakeVector<int>(allocator, toCopy);
+            auto set = IC::MakeUnorderedSet<int>(allocator, toCopy);
 
-            REQUIRE(vec.size() == 2);
-            REQUIRE(vec[0] == 5);
-            REQUIRE(vec[1] == 6);
+            REQUIRE(set.size() == 2);
+            REQUIRE(set.find(5) != set.end());
+            REQUIRE(set.find(6) != set.end());
         }
 
-        /// Confirms that a vector can be allocated from the Linear Allocator using a std::vector.
+        /// Confirms that a set can be allocated from the Linear Allocator using a std::set.
         ///
-        SECTION("MakeStdVectorLinearAllocator")
+        SECTION("MakeStdUnorderedSetLinearAllocator")
         {
-            const std::vector<int> toCopy = { 5, 6 };
+            const std::unordered_set<int> toCopy = { 5, 6 };
 
             IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
             IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
 
-            auto vec = IC::MakeVector<int>(linearAllocator, toCopy);
+            auto set = IC::MakeUnorderedSet<int>(linearAllocator, toCopy);
 
-            REQUIRE(vec.size() == 2);
-            REQUIRE(vec[0] == 5);
-            REQUIRE(vec[1] == 6);
+            REQUIRE(set.size() == 2);
+            REQUIRE(set.find(5) != set.end());
+            REQUIRE(set.find(6) != set.end());
         }
     }
 }
