@@ -20,10 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICMemory\BuddyAllocator.cpp" />
-    <ClCompile Include="ICMemory\FrameAllocator.cpp" />
+    <ClCompile Include="ICMemory\LinearAllocator.cpp" />
     <ClCompile Include="ICMemory\String.cpp" />
     <ClCompile Include="Tests\BuddyAllocatorTest.cpp" />
-    <ClCompile Include="Tests\FrameAllocatorTest.cpp" />
+    <ClCompile Include="Tests\LinearAllocatorTest.cpp" />
     <ClCompile Include="Tests\Main.cpp" />
     <ClCompile Include="Tests\StringTest.cpp" />
     <ClCompile Include="Tests\VectorTest.cpp" />
@@ -125,7 +125,7 @@
     <ClInclude Include="Catch\include\reporters\catch_reporter_xml.hpp" />
     <ClInclude Include="ICMemory\BuddyAllocator.h" />
     <ClInclude Include="ICMemory\ForwardDeclarations.h" />
-    <ClInclude Include="ICMemory\FrameAllocator.h" />
+    <ClInclude Include="ICMemory\LinearAllocator.h" />
     <ClInclude Include="ICMemory\IAllocator.h" />
     <ClInclude Include="ICMemory\ICMemory.h" />
     <ClInclude Include="ICMemory\String.h" />

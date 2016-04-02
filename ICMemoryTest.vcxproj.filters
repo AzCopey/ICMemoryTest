@@ -24,16 +24,10 @@
     <ClCompile Include="ICMemory\BuddyAllocator.cpp">
       <Filter>ICMemory</Filter>
     </ClCompile>
-    <ClCompile Include="ICMemory\FrameAllocator.cpp">
-      <Filter>ICMemory</Filter>
-    </ClCompile>
     <ClCompile Include="Tests\BuddyAllocatorTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="Tests\Main.cpp">
-      <Filter>Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="Tests\FrameAllocatorTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="Tests\VectorTest.cpp">
@@ -45,12 +39,15 @@
     <ClCompile Include="ICMemory\String.cpp">
       <Filter>ICMemory</Filter>
     </ClCompile>
+    <ClCompile Include="ICMemory\LinearAllocator.cpp">
+      <Filter>ICMemory</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\LinearAllocatorTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ICMemory\BuddyAllocator.h">
-      <Filter>ICMemory</Filter>
-    </ClInclude>
-    <ClInclude Include="ICMemory\FrameAllocator.h">
       <Filter>ICMemory</Filter>
     </ClInclude>
     <ClInclude Include="ICMemory\MemoryUtils.h">
@@ -360,6 +357,9 @@
       <Filter>ICMemory</Filter>
     </ClInclude>
     <ClInclude Include="ICMemory\String.h">
+      <Filter>ICMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\LinearAllocator.h">
       <Filter>ICMemory</Filter>
     </ClInclude>
   </ItemGroup>

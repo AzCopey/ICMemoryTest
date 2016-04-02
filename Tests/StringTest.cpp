@@ -45,16 +45,16 @@ TEST_CASE("String", "[Container]")
         REQUIRE(string == k_testString);
     }
 
-    /// Confirms that an empty string can be allocated from the Frame Allocator.
+    /// Confirms that an empty string can be allocated from the Linear Allocator.
     ///
-    SECTION("MakeEmptyFrameAllocator")
+    SECTION("MakeEmptyLinearAllocator")
     {
         constexpr char k_testString[] = "test";
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::FrameAllocator frameAllocator(buddyAllocator, 32);
+        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
 
-        auto string = IC::makeString(frameAllocator);
+        auto string = IC::makeString(LinearAllocator);
         string.append(k_testString);
 
         REQUIRE(string == k_testString);
@@ -73,16 +73,16 @@ TEST_CASE("String", "[Container]")
         REQUIRE(string == k_testString);
     }
 
-    /// Confirms that a string can be allocated from the Frame Allocator with a C string.
+    /// Confirms that a string can be allocated from the Linear Allocator with a C string.
     ///
-    SECTION("MakeCStringFrameAllocator")
+    SECTION("MakeCStringLinearAllocator")
     {
         constexpr char k_testString[] = "test";
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::FrameAllocator frameAllocator(buddyAllocator, 32);
+        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
 
-        auto string = IC::makeString(frameAllocator, k_testString);
+        auto string = IC::makeString(LinearAllocator, k_testString);
 
         REQUIRE(string == k_testString);
     }
@@ -101,17 +101,17 @@ TEST_CASE("String", "[Container]")
         REQUIRE(string == k_testString);
     }
 
-    /// Confirms that a string can be allocated from the Frame Allocator with a buffer.
+    /// Confirms that a string can be allocated from the Linear Allocator with a buffer.
     ///
-    SECTION("MakeBufferFrameAllocator")
+    SECTION("MakeBufferLinearAllocator")
     {
         constexpr char k_testString[] = "test";
         constexpr std::size_t k_bufferSize = 4;
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::FrameAllocator frameAllocator(buddyAllocator, 32);
+        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
 
-        auto string = IC::makeString(frameAllocator, k_testString, k_bufferSize);
+        auto string = IC::makeString(LinearAllocator, k_testString, k_bufferSize);
 
         REQUIRE(string == k_testString);
     }
@@ -129,16 +129,16 @@ TEST_CASE("String", "[Container]")
         REQUIRE(string == testString.c_str());
     }
 
-    /// Confirms that a string can be allocated from the Frame Allocator using a std::string.
+    /// Confirms that a string can be allocated from the Linear Allocator using a std::string.
     ///
-    SECTION("MakeStdStringFrameAllocator")
+    SECTION("MakeStdStringLinearAllocator")
     {
         const std::string testString = "test";
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::FrameAllocator frameAllocator(buddyAllocator, 32);
+        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
 
-        auto string = IC::makeString(frameAllocator, testString);
+        auto string = IC::makeString(LinearAllocator, testString);
 
         REQUIRE(string == testString.c_str());
     }
@@ -156,16 +156,16 @@ TEST_CASE("String", "[Container]")
         REQUIRE(string == testString.c_str());
     }
 
-    /// Confirms that a string can be allocated from the Frame Allocator with a range.
+    /// Confirms that a string can be allocated from the Linear Allocator with a range.
     ///
-    SECTION("MakeRangeFrameAllocator")
+    SECTION("MakeRangeLinearAllocator")
     {
         const std::string testString = "test";
 
         IC::BuddyAllocator buddyAllocator(512);
-        IC::FrameAllocator frameAllocator(buddyAllocator, 32);
+        IC::LinearAllocator LinearAllocator(buddyAllocator, 32);
 
-        auto string = IC::makeString(frameAllocator, testString.begin(), testString.end());
+        auto string = IC::makeString(LinearAllocator, testString.begin(), testString.end());
 
         REQUIRE(string == testString.c_str());
     }
