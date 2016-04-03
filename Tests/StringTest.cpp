@@ -33,7 +33,6 @@ namespace ICMemoryTest
     {
         constexpr std::size_t k_buddyAllocatorBufferSize = 2048;
         constexpr std::size_t k_buddyAllocatorMinBlockSize = 16;
-        constexpr std::size_t k_linearAllocatorPageSize = 512;
     }
 
     /// A series of unit tests for strings allocated from the memory pools.
@@ -60,8 +59,7 @@ namespace ICMemoryTest
         {
             constexpr char k_testString[] = "test";
 
-            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
-            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
+            IC::LinearAllocator linearAllocator;
 
             auto string = IC::MakeString(linearAllocator);
             string.append(k_testString);
@@ -88,8 +86,7 @@ namespace ICMemoryTest
         {
             constexpr char k_testString[] = "test";
 
-            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
-            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
+            IC::LinearAllocator linearAllocator;
 
             auto string = IC::MakeString(linearAllocator, k_testString);
 
@@ -117,8 +114,7 @@ namespace ICMemoryTest
             constexpr char k_testString[] = "test";
             constexpr std::size_t k_bufferSize = 4;
 
-            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
-            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
+            IC::LinearAllocator linearAllocator;
 
             auto string = IC::MakeString(linearAllocator, k_testString, k_bufferSize);
 
@@ -144,8 +140,7 @@ namespace ICMemoryTest
         {
             const std::string testString = "test";
 
-            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
-            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
+            IC::LinearAllocator linearAllocator;
 
             auto string = IC::MakeString(linearAllocator, testString);
 
@@ -171,8 +166,7 @@ namespace ICMemoryTest
         {
             const std::string testString = "test";
 
-            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
-            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
+            IC::LinearAllocator linearAllocator;
 
             auto string = IC::MakeString(linearAllocator, testString.begin(), testString.end());
 

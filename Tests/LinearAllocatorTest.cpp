@@ -34,10 +34,9 @@ namespace ICMemoryTest
     {
         /// Confirms that a unique pointer to a fundamental can be allocated from a LinearAllocator.
         ///
-        SECTION("UniqueFundamental", "[LinearAllocator]")
+        SECTION("UniqueFundamental")
         {
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto allocated = IC::MakeUnique<int>(linearAllocator);
             *allocated = 1;
@@ -47,10 +46,9 @@ namespace ICMemoryTest
 
         /// Confirms that a unique pointer to a fundamental with an initial value can be allocated from a LinearAllocator.
         ///
-        SECTION("UniqueFundamentalInitialValue", "[LinearAllocator]")
+        SECTION("UniqueFundamentalInitialValue")
         {
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto allocated = IC::MakeUnique<int>(linearAllocator, 1);
 
@@ -59,15 +57,14 @@ namespace ICMemoryTest
 
         /// Confirms that a unique pointer to a struct instance can be allocated from a LinearAllocator.
         ///
-        SECTION("UniqueStruct", "[LinearAllocator]")
+        SECTION("UniqueStruct")
         {
             struct ExampleClass
             {
                 int m_x, m_y;
             };
 
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator);
             allocated->m_x = 1;
@@ -79,7 +76,7 @@ namespace ICMemoryTest
 
         /// Confirms that a unique pointer to a struct instance with a constructor can be allocated from a LinearAllocator.
         ///
-        SECTION("UniqueStructConstructor", "[LinearAllocator]")
+        SECTION("UniqueStructConstructor")
         {
             struct ExampleClass
             {
@@ -87,8 +84,7 @@ namespace ICMemoryTest
                 int m_x, m_y;
             };
 
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator, 1, 2);
 
@@ -98,7 +94,7 @@ namespace ICMemoryTest
 
         /// Confirms that a unique pointer to a struct instance can be copy constructed from a LinearAllocator.
         ///
-        SECTION("UniqueStructCopyConstructor", "[LinearAllocator]")
+        SECTION("UniqueStructCopyConstructor")
         {
             struct ExampleClass
             {
@@ -109,8 +105,7 @@ namespace ICMemoryTest
             exampleClass.m_x = 1;
             exampleClass.m_y = 2;
 
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator, exampleClass);
 
@@ -120,12 +115,11 @@ namespace ICMemoryTest
 
         /// Confirms that a unique pointer to an array can be allocated from a LinearAllocator.
         ///
-        SECTION("UniqueArray", "[LinearAllocator]")
+        SECTION("UniqueArray")
         {
             const int k_numValues = 10;
 
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto allocated = IC::MakeUniqueArray<int>(linearAllocator, 10);
 
@@ -142,10 +136,9 @@ namespace ICMemoryTest
 
         /// Confirms that a shared pointer to a fundamental can be allocated from a LinearAllocator.
         ///
-        SECTION("SharedFundamental", "[LinearAllocator]")
+        SECTION("SharedFundamental")
         {
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto allocated = IC::MakeShared<int>(linearAllocator);
             *allocated = 1;
@@ -155,10 +148,9 @@ namespace ICMemoryTest
 
         /// Confirms that a shared pointer to a fundamental with an initial value can be allocated from a LinearAllocator.
         ///
-        SECTION("SharedFundamentalInitialValue", "[LinearAllocator]")
+        SECTION("SharedFundamentalInitialValue")
         {
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto allocated = IC::MakeShared<int>(linearAllocator, 1);
 
@@ -167,15 +159,14 @@ namespace ICMemoryTest
 
         /// Confirms that a shared pointer to a struct instance can be allocated from a LinearAllocator.
         ///
-        SECTION("SharedStruct", "[LinearAllocator]")
+        SECTION("SharedStruct")
         {
             struct ExampleClass
             {
                 int m_x, m_y;
             };
 
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto allocated = IC::MakeShared<ExampleClass>(linearAllocator);
             allocated->m_x = 1;
@@ -187,7 +178,7 @@ namespace ICMemoryTest
 
         /// Confirms that a shared pointer to a struct instance with a constructor can be allocated from a LinearAllocator.
         ///
-        SECTION("SharedStructConstructor", "[LinearAllocator]")
+        SECTION("SharedStructConstructor")
         {
             struct ExampleClass
             {
@@ -195,8 +186,7 @@ namespace ICMemoryTest
                 int m_x, m_y;
             };
 
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto allocated = IC::MakeShared<ExampleClass>(linearAllocator, 1, 2);
 
@@ -206,7 +196,7 @@ namespace ICMemoryTest
 
         /// Confirms that a shared pointer to a struct instance can be copy constructed from a LinearAllocator.
         ///
-        SECTION("SharedStructCopyConstructor", "[LinearAllocator]")
+        SECTION("SharedStructCopyConstructor")
         {
             struct ExampleClass
             {
@@ -217,8 +207,7 @@ namespace ICMemoryTest
             exampleClass.m_x = 1;
             exampleClass.m_y = 2;
 
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto allocated = IC::MakeShared<ExampleClass>(linearAllocator, exampleClass);
 
@@ -228,10 +217,9 @@ namespace ICMemoryTest
 
         /// Confirms that multiple objects can be allocated from a LinearAllocator.
         ///
-        SECTION("MultipleObjects", "[LinearAllocator]")
+        SECTION("MultipleObjects")
         {
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
             auto valueB = IC::MakeUnique<int>(linearAllocator, 2);
@@ -244,10 +232,9 @@ namespace ICMemoryTest
 
         /// Confirms that deallocating an object allocated from a LinearAllocator does not affect other allocations.
         ///
-        SECTION("Deallocation", "[LinearAllocator]")
+        SECTION("Deallocation")
         {
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
             auto valueB = IC::MakeUnique<int>(linearAllocator, 2);
@@ -262,7 +249,7 @@ namespace ICMemoryTest
 
         /// Confirms that objects of varying size can be allocated from a LinearAllocator.
         ///
-        SECTION("VaryingSizedObjects", "[LinearAllocator]")
+        SECTION("VaryingSizedObjects")
         {
             const char* k_exampleBuffer = "123456789\0";
 
@@ -278,8 +265,7 @@ namespace ICMemoryTest
                 std::int64_t m_z;
             };
 
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 64);
+            IC::LinearAllocator linearAllocator;
 
             auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
 
@@ -304,10 +290,11 @@ namespace ICMemoryTest
 
         /// Confirms that a new page can be successfully created if there is not enough room left in the current page.
         ///
-        SECTION("Paging", "[LinearAllocator]")
+        SECTION("Paging")
         {
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 32);
+            constexpr std::size_t k_pageSize = 32;
+
+            IC::LinearAllocator linearAllocator(k_pageSize);
 
             auto valueA = IC::MakeUnique<std::uint64_t>(linearAllocator, 1);
             auto valueB = IC::MakeUnique<std::uint64_t>(linearAllocator, 2);
@@ -322,24 +309,28 @@ namespace ICMemoryTest
             REQUIRE(*valueE == 5);
         }
 
-        /// Confirms that resetting a Linear Allocator will allow previous memory to be re-used.
+        /// Confirms that resetting a Linear Allocator can be backed by a Buddy Allocator.
         ///
-        SECTION("Reset", "[LinearAllocator]")
+        SECTION("BuddyAllocatorBacked")
         {
-            IC::BuddyAllocator buddyAllocator(512);
-            IC::LinearAllocator linearAllocator(buddyAllocator, 32);
+            constexpr std::size_t k_buddyAllocatorBufferSize = 2048;
+            constexpr std::size_t k_buddyAllocatorMinBlockSize = 32;
+            constexpr std::size_t k_pageSize = 32;
 
-            auto value = IC::MakeUnique<std::uint64_t>(linearAllocator, 1);
-            auto valueARaw = value.get();
-            value.reset();
+            struct ExampleClass
+            {
+                int m_x, m_y;
+            };
 
-            linearAllocator.Reset();
+            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize, k_buddyAllocatorMinBlockSize);
+            IC::LinearAllocator linearAllocator(buddyAllocator, k_pageSize);
 
-            value = IC::MakeUnique<std::uint64_t>(linearAllocator, 2);
-            auto valueBRaw = value.get();
+            auto allocated = IC::MakeShared<ExampleClass>(linearAllocator);
+            allocated->m_x = 1;
+            allocated->m_y = 2;
 
-            REQUIRE(*value == 2);
-            REQUIRE(valueARaw == valueBRaw);
+            REQUIRE(allocated->m_x == 1);
+            REQUIRE(allocated->m_y == 2);
         }
     }
 }

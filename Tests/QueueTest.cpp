@@ -33,7 +33,6 @@ namespace ICMemoryTest
     {
         constexpr std::size_t k_buddyAllocatorBufferSize = 2048;
         constexpr std::size_t k_buddyAllocatorMinBlockSize = 16;
-        constexpr std::size_t k_linearAllocatorPageSize = 512;
     }
 
     /// A series of unit tests for queues allocated from the memory pools.
@@ -61,8 +60,7 @@ namespace ICMemoryTest
         ///
         SECTION("MakeEmptyLinearAllocator")
         {
-            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
-            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
+            IC::LinearAllocator linearAllocator;
 
             auto queue = IC::MakeQueue<int>(linearAllocator);
             queue.push(5);

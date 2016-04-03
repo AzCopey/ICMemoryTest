@@ -33,7 +33,6 @@ namespace ICMemoryTest
     {
         constexpr std::size_t k_buddyAllocatorBufferSize = 2048;
         constexpr std::size_t k_buddyAllocatorMinBlockSize = 16;
-        constexpr std::size_t k_linearAllocatorPageSize = 512;
     }
 
     /// A series of unit tests for vectors allocated from the memory pools.
@@ -59,8 +58,7 @@ namespace ICMemoryTest
         ///
         SECTION("MakeEmptyLinearAllocator")
         {
-            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
-            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
+            IC::LinearAllocator linearAllocator;
 
             auto vec = IC::MakeVector<int>(linearAllocator);
             vec.push_back(5);
@@ -92,8 +90,7 @@ namespace ICMemoryTest
         {
             const std::vector<int> toCopy = { 5, 6 };
 
-            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
-            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
+            IC::LinearAllocator linearAllocator;
 
             auto vec = IC::MakeVector<int>(linearAllocator, toCopy.begin(), toCopy.end());
 
@@ -123,8 +120,7 @@ namespace ICMemoryTest
         {
             const std::vector<int> toCopy = { 5, 6 };
 
-            IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize);
-            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorPageSize);
+            IC::LinearAllocator linearAllocator;
 
             auto vec = IC::MakeVector<int>(linearAllocator, toCopy);
 
