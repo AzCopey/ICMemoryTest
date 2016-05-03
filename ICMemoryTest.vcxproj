@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ICMemory\BuddyAllocator.cpp" />
-    <ClCompile Include="ICMemory\LinearAllocator.cpp" />
-    <ClCompile Include="ICMemory\String.cpp" />
+    <ClCompile Include="ICMemory\Allocators\BuddyAllocator.cpp" />
+    <ClCompile Include="ICMemory\Allocators\LinearAllocator.cpp" />
+    <ClCompile Include="ICMemory\Containers\String.cpp" />
     <ClCompile Include="Tests\BuddyAllocatorTest.cpp" />
     <ClCompile Include="Tests\DequeTest.cpp" />
     <ClCompile Include="Tests\LinearAllocatorTest.cpp" />
@@ -128,22 +128,22 @@
     <ClInclude Include="Catch\include\reporters\catch_reporter_multi.hpp" />
     <ClInclude Include="Catch\include\reporters\catch_reporter_teamcity.hpp" />
     <ClInclude Include="Catch\include\reporters\catch_reporter_xml.hpp" />
-    <ClInclude Include="ICMemory\BuddyAllocator.h" />
-    <ClInclude Include="ICMemory\Deque.h" />
+    <ClInclude Include="ICMemory\Allocators\AllocatorWrapper.h" />
+    <ClInclude Include="ICMemory\Allocators\BuddyAllocator.h" />
+    <ClInclude Include="ICMemory\Allocators\IAllocator.h" />
+    <ClInclude Include="ICMemory\Allocators\LinearAllocator.h" />
+    <ClInclude Include="ICMemory\Containers\Deque.h" />
+    <ClInclude Include="ICMemory\Containers\Queue.h" />
+    <ClInclude Include="ICMemory\Containers\SharedPtr.h" />
+    <ClInclude Include="ICMemory\Containers\Stack.h" />
+    <ClInclude Include="ICMemory\Containers\String.h" />
+    <ClInclude Include="ICMemory\Containers\UniquePtr.h" />
+    <ClInclude Include="ICMemory\Containers\UnorderedMap.h" />
+    <ClInclude Include="ICMemory\Containers\UnorderedSet.h" />
+    <ClInclude Include="ICMemory\Containers\Vector.h" />
     <ClInclude Include="ICMemory\ForwardDeclarations.h" />
-    <ClInclude Include="ICMemory\LinearAllocator.h" />
-    <ClInclude Include="ICMemory\IAllocator.h" />
     <ClInclude Include="ICMemory\ICMemory.h" />
-    <ClInclude Include="ICMemory\Queue.h" />
-    <ClInclude Include="ICMemory\Stack.h" />
-    <ClInclude Include="ICMemory\String.h" />
-    <ClInclude Include="ICMemory\SharedPtr.h" />
-    <ClInclude Include="ICMemory\UniquePtr.h" />
-    <ClInclude Include="ICMemory\UnorderedMap.h" />
-    <ClInclude Include="ICMemory\UnorderedSet.h" />
-    <ClInclude Include="ICMemory\Vector.h" />
-    <ClInclude Include="ICMemory\MemoryUtils.h" />
-    <ClInclude Include="ICMemory\AllocatorWrapper.h" />
+    <ClInclude Include="ICMemory\Utility\MemoryUtils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{80F97F78-C77E-46C7-B97C-2F0783FF6A5C}</ProjectGuid>
@@ -198,17 +198,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>Catch\include\;$(IncludePath)</IncludePath>
+    <IncludePath>Catch\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>Catch\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>Catch\include\;$(IncludePath)</IncludePath>
+    <IncludePath>Catch\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>Catch\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

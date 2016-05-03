@@ -3,3 +3,4 @@ ICMemoryTest.opensdf
 ICMemoryTest.sdf
 Debug/
 ICMemoryTest.vcxproj.user
+*.opendb
