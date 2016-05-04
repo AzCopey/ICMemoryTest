@@ -431,5 +431,8 @@
     <ClInclude Include="ICMemory\Containers\VectorImpl.h">
       <Filter>ICMemory\Containers</Filter>
     </ClInclude>
+    <ClInclude Include="ICMemory\Allocators\AllocatorWrapperImpl.h">
+      <Filter>ICMemory\Allocators</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

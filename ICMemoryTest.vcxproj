@@ -129,6 +129,7 @@
     <ClInclude Include="Catch\include\reporters\catch_reporter_teamcity.hpp" />
     <ClInclude Include="Catch\include\reporters\catch_reporter_xml.hpp" />
     <ClInclude Include="ICMemory\Allocators\AllocatorWrapper.h" />
+    <ClInclude Include="ICMemory\Allocators\AllocatorWrapperImpl.h" />
     <ClInclude Include="ICMemory\Allocators\BuddyAllocator.h" />
     <ClInclude Include="ICMemory\Allocators\IAllocator.h" />
     <ClInclude Include="ICMemory\Allocators\LinearAllocator.h" />
