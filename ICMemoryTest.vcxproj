@@ -26,6 +26,8 @@
     <ClCompile Include="Tests\DequeTest.cpp" />
     <ClCompile Include="Tests\LinearAllocatorTest.cpp" />
     <ClCompile Include="Tests\Main.cpp" />
+    <ClCompile Include="Tests\ObjectPoolTest.cpp" />
+    <ClCompile Include="Tests\PagedObjectPoolTest.cpp" />
     <ClCompile Include="Tests\QueueTest.cpp" />
     <ClCompile Include="Tests\StackTest.cpp" />
     <ClCompile Include="Tests\StringTest.cpp" />
@@ -153,6 +155,10 @@
     <ClInclude Include="ICMemory\Container\VectorImpl.h" />
     <ClInclude Include="ICMemory\ForwardDeclarations.h" />
     <ClInclude Include="ICMemory\ICMemory.h" />
+    <ClInclude Include="ICMemory\Pool\ObjectPool.h" />
+    <ClInclude Include="ICMemory\Pool\ObjectPoolImpl.h" />
+    <ClInclude Include="ICMemory\Pool\PagedObjectPool.h" />
+    <ClInclude Include="ICMemory\Pool\PagedObjectPoolImpl.h" />
     <ClInclude Include="ICMemory\Utility\MemoryUtils.h" />
     <ClInclude Include="ICMemory\Utility\MemoryUtilsImpl.h" />
   </ItemGroup>

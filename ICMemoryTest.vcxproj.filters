@@ -28,6 +28,9 @@
     <Filter Include="ICMemory\Utility">
       <UniqueIdentifier>{46b6a2e6-1538-4dfb-8d3e-4afbf270b79d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ICMemory\Pool">
+      <UniqueIdentifier>{27fb16f9-41f7-442b-877a-61849f768808}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Tests\BuddyAllocatorTest.cpp">
@@ -68,6 +71,12 @@
     </ClCompile>
     <ClCompile Include="ICMemory\Container\String.cpp">
       <Filter>ICMemory\Container</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\ObjectPoolTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\PagedObjectPoolTest.cpp">
+      <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -433,6 +442,18 @@
     </ClInclude>
     <ClInclude Include="ICMemory\Utility\MemoryUtilsImpl.h">
       <Filter>ICMemory\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Pool\ObjectPool.h">
+      <Filter>ICMemory\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Pool\ObjectPoolImpl.h">
+      <Filter>ICMemory\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Pool\PagedObjectPool.h">
+      <Filter>ICMemory\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Pool\PagedObjectPoolImpl.h">
+      <Filter>ICMemory\Pool</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
