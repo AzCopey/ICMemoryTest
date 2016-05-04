@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ICMemory">
-      <UniqueIdentifier>{0d4745e0-1778-4a58-8f8e-06497ecface7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Catch">
       <UniqueIdentifier>{dfcc3625-a27f-440a-a2ec-edd6b8599228}</UniqueIdentifier>
     </Filter>
@@ -19,14 +16,17 @@
     <Filter Include="Tests">
       <UniqueIdentifier>{6abfce63-f20a-4b69-a7ad-093f84ead7d8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ICMemory\Allocators">
-      <UniqueIdentifier>{1217ab7b-17df-432e-a60f-03d613202092}</UniqueIdentifier>
+    <Filter Include="ICMemory">
+      <UniqueIdentifier>{865c3091-ea4c-4c96-b453-fd006fc092f7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ICMemory\Containers">
-      <UniqueIdentifier>{1130b668-ff7f-41bb-91e6-04e66c27791e}</UniqueIdentifier>
+    <Filter Include="ICMemory\Allocator">
+      <UniqueIdentifier>{85cf5669-9c68-408e-b257-ef75a0f886fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ICMemory\Container">
+      <UniqueIdentifier>{19f6afe4-04c6-46b0-a283-aa0cd61357a2}</UniqueIdentifier>
     </Filter>
     <Filter Include="ICMemory\Utility">
-      <UniqueIdentifier>{b0261bd7-3357-4892-a774-a758d95a56e4}</UniqueIdentifier>
+      <UniqueIdentifier>{46b6a2e6-1538-4dfb-8d3e-4afbf270b79d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,14 +60,14 @@
     <ClCompile Include="Tests\StackTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="ICMemory\Allocators\BuddyAllocator.cpp">
-      <Filter>ICMemory\Allocators</Filter>
+    <ClCompile Include="ICMemory\Allocator\BuddyAllocator.cpp">
+      <Filter>ICMemory\Allocator</Filter>
     </ClCompile>
-    <ClCompile Include="ICMemory\Allocators\LinearAllocator.cpp">
-      <Filter>ICMemory\Allocators</Filter>
+    <ClCompile Include="ICMemory\Allocator\LinearAllocator.cpp">
+      <Filter>ICMemory\Allocator</Filter>
     </ClCompile>
-    <ClCompile Include="ICMemory\Containers\String.cpp">
-      <Filter>ICMemory\Containers</Filter>
+    <ClCompile Include="ICMemory\Container\String.cpp">
+      <Filter>ICMemory\Container</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -359,80 +359,80 @@
     <ClInclude Include="ICMemory\ICMemory.h">
       <Filter>ICMemory</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Allocators\AllocatorWrapper.h">
-      <Filter>ICMemory\Allocators</Filter>
+    <ClInclude Include="ICMemory\Allocator\AllocatorWrapper.h">
+      <Filter>ICMemory\Allocator</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Allocators\BuddyAllocator.h">
-      <Filter>ICMemory\Allocators</Filter>
+    <ClInclude Include="ICMemory\Allocator\AllocatorWrapperImpl.h">
+      <Filter>ICMemory\Allocator</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Allocators\IAllocator.h">
-      <Filter>ICMemory\Allocators</Filter>
+    <ClInclude Include="ICMemory\Allocator\BuddyAllocator.h">
+      <Filter>ICMemory\Allocator</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Allocators\LinearAllocator.h">
-      <Filter>ICMemory\Allocators</Filter>
+    <ClInclude Include="ICMemory\Allocator\IAllocator.h">
+      <Filter>ICMemory\Allocator</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Containers\Deque.h">
-      <Filter>ICMemory\Containers</Filter>
+    <ClInclude Include="ICMemory\Allocator\LinearAllocator.h">
+      <Filter>ICMemory\Allocator</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Containers\Queue.h">
-      <Filter>ICMemory\Containers</Filter>
+    <ClInclude Include="ICMemory\Container\Deque.h">
+      <Filter>ICMemory\Container</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Containers\SharedPtr.h">
-      <Filter>ICMemory\Containers</Filter>
+    <ClInclude Include="ICMemory\Container\DequeImpl.h">
+      <Filter>ICMemory\Container</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Containers\Stack.h">
-      <Filter>ICMemory\Containers</Filter>
+    <ClInclude Include="ICMemory\Container\Queue.h">
+      <Filter>ICMemory\Container</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Containers\String.h">
-      <Filter>ICMemory\Containers</Filter>
+    <ClInclude Include="ICMemory\Container\QueueImpl.h">
+      <Filter>ICMemory\Container</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Containers\UniquePtr.h">
-      <Filter>ICMemory\Containers</Filter>
+    <ClInclude Include="ICMemory\Container\SharedPtr.h">
+      <Filter>ICMemory\Container</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Containers\UnorderedMap.h">
-      <Filter>ICMemory\Containers</Filter>
+    <ClInclude Include="ICMemory\Container\SharedPtrImpl.h">
+      <Filter>ICMemory\Container</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Containers\UnorderedSet.h">
-      <Filter>ICMemory\Containers</Filter>
+    <ClInclude Include="ICMemory\Container\Stack.h">
+      <Filter>ICMemory\Container</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Containers\Vector.h">
-      <Filter>ICMemory\Containers</Filter>
+    <ClInclude Include="ICMemory\Container\StackImpl.h">
+      <Filter>ICMemory\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Container\String.h">
+      <Filter>ICMemory\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Container\StringImpl.h">
+      <Filter>ICMemory\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Container\UniquePtr.h">
+      <Filter>ICMemory\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Container\UniquePtrImpl.h">
+      <Filter>ICMemory\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Container\UnorderedMap.h">
+      <Filter>ICMemory\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Container\UnorderedMapImpl.h">
+      <Filter>ICMemory\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Container\UnorderedSet.h">
+      <Filter>ICMemory\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Container\UnorderedSetImpl.h">
+      <Filter>ICMemory\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Container\Vector.h">
+      <Filter>ICMemory\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Container\VectorImpl.h">
+      <Filter>ICMemory\Container</Filter>
     </ClInclude>
     <ClInclude Include="ICMemory\Utility\MemoryUtils.h">
       <Filter>ICMemory\Utility</Filter>
     </ClInclude>
     <ClInclude Include="ICMemory\Utility\MemoryUtilsImpl.h">
       <Filter>ICMemory\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="ICMemory\Containers\DequeImpl.h">
-      <Filter>ICMemory\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="ICMemory\Containers\QueueImpl.h">
-      <Filter>ICMemory\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="ICMemory\Containers\SharedPtrImpl.h">
-      <Filter>ICMemory\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="ICMemory\Containers\StackImpl.h">
-      <Filter>ICMemory\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="ICMemory\Containers\StringImpl.h">
-      <Filter>ICMemory\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="ICMemory\Containers\UniquePtrImpl.h">
-      <Filter>ICMemory\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="ICMemory\Containers\UnorderedMapImpl.h">
-      <Filter>ICMemory\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="ICMemory\Containers\UnorderedSetImpl.h">
-      <Filter>ICMemory\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="ICMemory\Containers\VectorImpl.h">
-      <Filter>ICMemory\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="ICMemory\Allocators\AllocatorWrapperImpl.h">
-      <Filter>ICMemory\Allocators</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
