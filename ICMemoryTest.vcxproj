@@ -133,17 +133,27 @@
     <ClInclude Include="ICMemory\Allocators\IAllocator.h" />
     <ClInclude Include="ICMemory\Allocators\LinearAllocator.h" />
     <ClInclude Include="ICMemory\Containers\Deque.h" />
+    <ClInclude Include="ICMemory\Containers\DequeImpl.h" />
     <ClInclude Include="ICMemory\Containers\Queue.h" />
+    <ClInclude Include="ICMemory\Containers\QueueImpl.h" />
     <ClInclude Include="ICMemory\Containers\SharedPtr.h" />
+    <ClInclude Include="ICMemory\Containers\SharedPtrImpl.h" />
     <ClInclude Include="ICMemory\Containers\Stack.h" />
+    <ClInclude Include="ICMemory\Containers\StackImpl.h" />
     <ClInclude Include="ICMemory\Containers\String.h" />
+    <ClInclude Include="ICMemory\Containers\StringImpl.h" />
     <ClInclude Include="ICMemory\Containers\UniquePtr.h" />
+    <ClInclude Include="ICMemory\Containers\UniquePtrImpl.h" />
     <ClInclude Include="ICMemory\Containers\UnorderedMap.h" />
+    <ClInclude Include="ICMemory\Containers\UnorderedMapImpl.h" />
     <ClInclude Include="ICMemory\Containers\UnorderedSet.h" />
+    <ClInclude Include="ICMemory\Containers\UnorderedSetImpl.h" />
     <ClInclude Include="ICMemory\Containers\Vector.h" />
+    <ClInclude Include="ICMemory\Containers\VectorImpl.h" />
     <ClInclude Include="ICMemory\ForwardDeclarations.h" />
     <ClInclude Include="ICMemory\ICMemory.h" />
     <ClInclude Include="ICMemory\Utility\MemoryUtils.h" />
+    <ClInclude Include="ICMemory\Utility\MemoryUtilsImpl.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{80F97F78-C77E-46C7-B97C-2F0783FF6A5C}</ProjectGuid>
