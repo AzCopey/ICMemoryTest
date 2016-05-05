@@ -22,6 +22,7 @@
     <ClCompile Include="ICMemory\Allocator\BuddyAllocator.cpp" />
     <ClCompile Include="ICMemory\Allocator\LinearAllocator.cpp" />
     <ClCompile Include="ICMemory\Container\String.cpp" />
+    <ClCompile Include="ICMemory\Pool\SmallObjectPool.cpp" />
     <ClCompile Include="Tests\BuddyAllocatorTest.cpp" />
     <ClCompile Include="Tests\DequeTest.cpp" />
     <ClCompile Include="Tests\LinearAllocatorTest.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="Tests\ObjectPoolTest.cpp" />
     <ClCompile Include="Tests\PagedObjectPoolTest.cpp" />
     <ClCompile Include="Tests\QueueTest.cpp" />
+    <ClCompile Include="Tests\SmallObjectPoolTest.cpp" />
     <ClCompile Include="Tests\StackTest.cpp" />
     <ClCompile Include="Tests\StringTest.cpp" />
     <ClCompile Include="Tests\UnorderedMapTest.cpp" />
@@ -159,6 +161,8 @@
     <ClInclude Include="ICMemory\Pool\ObjectPoolImpl.h" />
     <ClInclude Include="ICMemory\Pool\PagedObjectPool.h" />
     <ClInclude Include="ICMemory\Pool\PagedObjectPoolImpl.h" />
+    <ClInclude Include="ICMemory\Pool\SmallObjectPool.h" />
+    <ClInclude Include="ICMemory\Pool\SmallObjectPoolImpl.h" />
     <ClInclude Include="ICMemory\Utility\MemoryUtils.h" />
     <ClInclude Include="ICMemory\Utility\MemoryUtilsImpl.h" />
   </ItemGroup>

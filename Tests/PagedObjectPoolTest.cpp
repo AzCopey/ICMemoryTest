@@ -222,6 +222,27 @@ namespace ICMemoryTest
 			REQUIRE(*valueC == 3);
 		}
 
+		/// Confirms that paging works correctly in the PagedObjectPool.
+		///
+		SECTION("Paging")
+		{
+			constexpr std::size_t k_pageSize = 2;
+
+			IC::PagedObjectPool<int> pagedObjectPool(k_pageSize);
+
+			auto valueA = pagedObjectPool.Create(1);
+			auto valueB = pagedObjectPool.Create(2);
+			auto valueC = pagedObjectPool.Create(3);
+			auto valueD = pagedObjectPool.Create(4);
+			auto valueE = pagedObjectPool.Create(5);
+
+			REQUIRE(*valueA == 1);
+			REQUIRE(*valueB == 2);
+			REQUIRE(*valueC == 3);
+			REQUIRE(*valueD == 4);
+			REQUIRE(*valueE == 5);
+		}
+
 		/// Confirms that a PagedObjectPool can be backed by a BuddyAllocator.
 		///
 		SECTION("BuddyAllocatorBacked")

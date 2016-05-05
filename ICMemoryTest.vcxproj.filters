@@ -78,6 +78,12 @@
     <ClCompile Include="Tests\PagedObjectPoolTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\SmallObjectPoolTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="ICMemory\Pool\SmallObjectPool.cpp">
+      <Filter>ICMemory\Pool</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Catch\include\internal\catch_approx.hpp">
@@ -453,6 +459,12 @@
       <Filter>ICMemory\Pool</Filter>
     </ClInclude>
     <ClInclude Include="ICMemory\Pool\PagedObjectPoolImpl.h">
+      <Filter>ICMemory\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Pool\SmallObjectPool.h">
+      <Filter>ICMemory\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Pool\SmallObjectPoolImpl.h">
       <Filter>ICMemory\Pool</Filter>
     </ClInclude>
   </ItemGroup>
