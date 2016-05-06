@@ -19,15 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ICMemory\Allocator\BlockAllocator.cpp" />
     <ClCompile Include="ICMemory\Allocator\BuddyAllocator.cpp" />
     <ClCompile Include="ICMemory\Allocator\LinearAllocator.cpp" />
+    <ClCompile Include="ICMemory\Allocator\PagedBlockAllocator.cpp" />
     <ClCompile Include="ICMemory\Container\String.cpp" />
     <ClCompile Include="ICMemory\Pool\SmallObjectPool.cpp" />
+    <ClCompile Include="Tests\BlockAllocatorTest.cpp" />
     <ClCompile Include="Tests\BuddyAllocatorTest.cpp" />
     <ClCompile Include="Tests\DequeTest.cpp" />
     <ClCompile Include="Tests\LinearAllocatorTest.cpp" />
     <ClCompile Include="Tests\Main.cpp" />
     <ClCompile Include="Tests\ObjectPoolTest.cpp" />
+    <ClCompile Include="Tests\PagedBlockAllocatorTest.cpp" />
     <ClCompile Include="Tests\PagedObjectPoolTest.cpp" />
     <ClCompile Include="Tests\QueueTest.cpp" />
     <ClCompile Include="Tests\SmallObjectPoolTest.cpp" />
@@ -134,9 +138,11 @@
     <ClInclude Include="Catch\include\reporters\catch_reporter_xml.hpp" />
     <ClInclude Include="ICMemory\Allocator\AllocatorWrapper.h" />
     <ClInclude Include="ICMemory\Allocator\AllocatorWrapperImpl.h" />
+    <ClInclude Include="ICMemory\Allocator\BlockAllocator.h" />
     <ClInclude Include="ICMemory\Allocator\BuddyAllocator.h" />
     <ClInclude Include="ICMemory\Allocator\IAllocator.h" />
     <ClInclude Include="ICMemory\Allocator\LinearAllocator.h" />
+    <ClInclude Include="ICMemory\Allocator\PagedBlockAllocator.h" />
     <ClInclude Include="ICMemory\Container\Deque.h" />
     <ClInclude Include="ICMemory\Container\DequeImpl.h" />
     <ClInclude Include="ICMemory\Container\Queue.h" />
