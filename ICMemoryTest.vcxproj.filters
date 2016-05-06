@@ -78,12 +78,6 @@
     <ClCompile Include="Tests\PagedObjectPoolTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\SmallObjectPoolTest.cpp">
-      <Filter>Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="ICMemory\Pool\SmallObjectPool.cpp">
-      <Filter>ICMemory\Pool</Filter>
-    </ClCompile>
     <ClCompile Include="ICMemory\Allocator\BlockAllocator.cpp">
       <Filter>ICMemory\Allocator</Filter>
     </ClCompile>
@@ -95,6 +89,12 @@
     </ClCompile>
     <ClCompile Include="Tests\PagedBlockAllocatorTest.cpp">
       <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\SmallObjectAllocatorTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="ICMemory\Allocator\SmallObjectAllocator.cpp">
+      <Filter>ICMemory\Allocator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -473,16 +473,13 @@
     <ClInclude Include="ICMemory\Pool\PagedObjectPoolImpl.h">
       <Filter>ICMemory\Pool</Filter>
     </ClInclude>
-    <ClInclude Include="ICMemory\Pool\SmallObjectPool.h">
-      <Filter>ICMemory\Pool</Filter>
-    </ClInclude>
-    <ClInclude Include="ICMemory\Pool\SmallObjectPoolImpl.h">
-      <Filter>ICMemory\Pool</Filter>
-    </ClInclude>
     <ClInclude Include="ICMemory\Allocator\BlockAllocator.h">
       <Filter>ICMemory\Allocator</Filter>
     </ClInclude>
     <ClInclude Include="ICMemory\Allocator\PagedBlockAllocator.h">
+      <Filter>ICMemory\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Allocator\SmallObjectAllocator.h">
       <Filter>ICMemory\Allocator</Filter>
     </ClInclude>
   </ItemGroup>
