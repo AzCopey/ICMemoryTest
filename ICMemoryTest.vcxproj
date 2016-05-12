@@ -23,6 +23,7 @@
     <ClCompile Include="ICMemory\Allocator\BuddyAllocator.cpp" />
     <ClCompile Include="ICMemory\Allocator\LinearAllocator.cpp" />
     <ClCompile Include="ICMemory\Allocator\PagedBlockAllocator.cpp" />
+    <ClCompile Include="ICMemory\Allocator\PagedLinearAllocator.cpp" />
     <ClCompile Include="ICMemory\Allocator\SmallObjectAllocator.cpp" />
     <ClCompile Include="ICMemory\Container\String.cpp" />
     <ClCompile Include="Tests\BlockAllocatorTest.cpp" />
@@ -32,6 +33,7 @@
     <ClCompile Include="Tests\Main.cpp" />
     <ClCompile Include="Tests\ObjectPoolTest.cpp" />
     <ClCompile Include="Tests\PagedBlockAllocatorTest.cpp" />
+    <ClCompile Include="Tests\PagedLinearAllocatorTest.cpp" />
     <ClCompile Include="Tests\PagedObjectPoolTest.cpp" />
     <ClCompile Include="Tests\QueueTest.cpp" />
     <ClCompile Include="Tests\SmallObjectAllocatorTest.cpp" />
@@ -143,6 +145,7 @@
     <ClInclude Include="ICMemory\Allocator\IAllocator.h" />
     <ClInclude Include="ICMemory\Allocator\LinearAllocator.h" />
     <ClInclude Include="ICMemory\Allocator\PagedBlockAllocator.h" />
+    <ClInclude Include="ICMemory\Allocator\PagedLinearAllocator.h" />
     <ClInclude Include="ICMemory\Allocator\SmallObjectAllocator.h" />
     <ClInclude Include="ICMemory\Container\Deque.h" />
     <ClInclude Include="ICMemory\Container\DequeImpl.h" />

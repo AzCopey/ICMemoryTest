@@ -28,6 +28,11 @@
 
 namespace ICMemoryTest
 {
+	namespace
+	{
+		constexpr std::size_t k_defaultBufferSize = 4 * 1024;
+	}
+
     /// A series of tests for the LinearAllocator
     ///
     TEST_CASE("LinearAllocator", "[Allocator]")
@@ -36,7 +41,7 @@ namespace ICMemoryTest
         ///
         SECTION("UniqueFundamental")
         {
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto allocated = IC::MakeUnique<int>(linearAllocator);
             *allocated = 1;
@@ -48,7 +53,7 @@ namespace ICMemoryTest
         ///
         SECTION("UniqueFundamentalInitialValue")
         {
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto allocated = IC::MakeUnique<int>(linearAllocator, 1);
 
@@ -64,7 +69,7 @@ namespace ICMemoryTest
                 int m_x, m_y;
             };
 
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator);
             allocated->m_x = 1;
@@ -84,7 +89,7 @@ namespace ICMemoryTest
                 int m_x, m_y;
             };
 
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator, 1, 2);
 
@@ -105,7 +110,7 @@ namespace ICMemoryTest
             exampleClass.m_x = 1;
             exampleClass.m_y = 2;
 
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto allocated = IC::MakeUnique<ExampleClass>(linearAllocator, exampleClass);
 
@@ -119,7 +124,7 @@ namespace ICMemoryTest
         {
             const int k_numValues = 10;
 
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto allocated = IC::MakeUniqueArray<int>(linearAllocator, 10);
 
@@ -138,7 +143,7 @@ namespace ICMemoryTest
         ///
         SECTION("SharedFundamental")
         {
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto allocated = IC::MakeShared<int>(linearAllocator);
             *allocated = 1;
@@ -150,7 +155,7 @@ namespace ICMemoryTest
         ///
         SECTION("SharedFundamentalInitialValue")
         {
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto allocated = IC::MakeShared<int>(linearAllocator, 1);
 
@@ -166,7 +171,7 @@ namespace ICMemoryTest
                 int m_x, m_y;
             };
 
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto allocated = IC::MakeShared<ExampleClass>(linearAllocator);
             allocated->m_x = 1;
@@ -186,7 +191,7 @@ namespace ICMemoryTest
                 int m_x, m_y;
             };
 
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto allocated = IC::MakeShared<ExampleClass>(linearAllocator, 1, 2);
 
@@ -207,7 +212,7 @@ namespace ICMemoryTest
             exampleClass.m_x = 1;
             exampleClass.m_y = 2;
 
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto allocated = IC::MakeShared<ExampleClass>(linearAllocator, exampleClass);
 
@@ -219,7 +224,7 @@ namespace ICMemoryTest
         ///
         SECTION("MultipleObjects")
         {
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
             auto valueB = IC::MakeUnique<int>(linearAllocator, 2);
@@ -234,7 +239,7 @@ namespace ICMemoryTest
         ///
         SECTION("Deallocation")
         {
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
             auto valueB = IC::MakeUnique<int>(linearAllocator, 2);
@@ -265,7 +270,7 @@ namespace ICMemoryTest
                 std::int64_t m_z;
             };
 
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_defaultBufferSize);
 
             auto valueA = IC::MakeUnique<int>(linearAllocator, 1);
 
@@ -288,34 +293,13 @@ namespace ICMemoryTest
             REQUIRE(valueC->m_z == 15);
         }
 
-        /// Confirms that a new page can be successfully created if there is not enough room left in the current page.
-        ///
-        SECTION("Paging")
-        {
-            constexpr std::size_t k_pageSize = 32;
-
-            IC::LinearAllocator linearAllocator(k_pageSize);
-
-            auto valueA = IC::MakeUnique<std::uint64_t>(linearAllocator, 1);
-            auto valueB = IC::MakeUnique<std::uint64_t>(linearAllocator, 2);
-            auto valueC = IC::MakeUnique<std::uint64_t>(linearAllocator, 3);
-            auto valueD = IC::MakeUnique<std::uint64_t>(linearAllocator, 4);
-            auto valueE = IC::MakeUnique<std::uint64_t>(linearAllocator, 5);
-
-            REQUIRE(*valueA == 1);
-            REQUIRE(*valueB == 2);
-            REQUIRE(*valueC == 3);
-            REQUIRE(*valueD == 4);
-            REQUIRE(*valueE == 5);
-        }
-
         /// Confirms that resetting a Linear Allocator can be backed by a Buddy Allocator.
         ///
         SECTION("BuddyAllocatorBacked")
         {
             constexpr std::size_t k_buddyAllocatorBufferSize = 2048;
             constexpr std::size_t k_buddyAllocatorMinBlockSize = 32;
-            constexpr std::size_t k_pageSize = 32;
+            constexpr std::size_t k_linearAllocatorBufferSize = 32;
 
             struct ExampleClass
             {
@@ -323,7 +307,7 @@ namespace ICMemoryTest
             };
 
             IC::BuddyAllocator buddyAllocator(k_buddyAllocatorBufferSize, k_buddyAllocatorMinBlockSize);
-            IC::LinearAllocator linearAllocator(buddyAllocator, k_pageSize);
+            IC::LinearAllocator linearAllocator(buddyAllocator, k_linearAllocatorBufferSize);
 
             auto allocated = IC::MakeShared<ExampleClass>(linearAllocator);
             allocated->m_x = 1;

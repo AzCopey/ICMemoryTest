@@ -31,6 +31,7 @@ namespace ICMemoryTest
 {
     namespace
     {
+		constexpr std::size_t k_linearAllocatorBufferSize = 4 * 1024;
         constexpr std::size_t k_buddyAllocatorBufferSize = 2048;
         constexpr std::size_t k_buddyAllocatorMinBlockSize = 16;
     }
@@ -60,7 +61,7 @@ namespace ICMemoryTest
         ///
         SECTION("MakeEmptyLinearAllocator")
         {
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_linearAllocatorBufferSize);
 
             auto stack = IC::MakeStack<int>(linearAllocator);
             stack.push(5);

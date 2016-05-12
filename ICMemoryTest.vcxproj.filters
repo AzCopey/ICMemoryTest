@@ -96,6 +96,12 @@
     <ClCompile Include="ICMemory\Allocator\SmallObjectAllocator.cpp">
       <Filter>ICMemory\Allocator</Filter>
     </ClCompile>
+    <ClCompile Include="ICMemory\Allocator\PagedLinearAllocator.cpp">
+      <Filter>ICMemory\Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\PagedLinearAllocatorTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Catch\include\internal\catch_approx.hpp">
@@ -480,6 +486,9 @@
       <Filter>ICMemory\Allocator</Filter>
     </ClInclude>
     <ClInclude Include="ICMemory\Allocator\SmallObjectAllocator.h">
+      <Filter>ICMemory\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="ICMemory\Allocator\PagedLinearAllocator.h">
       <Filter>ICMemory\Allocator</Filter>
     </ClInclude>
   </ItemGroup>

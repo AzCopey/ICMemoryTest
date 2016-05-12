@@ -31,6 +31,7 @@ namespace ICMemoryTest
 {
     namespace
     {
+		constexpr std::size_t k_linearAllocatorBufferSize = 4 * 1024;
         constexpr std::size_t k_buddyAllocatorBufferSize = 2048;
         constexpr std::size_t k_buddyAllocatorMinBlockSize = 16;
     }
@@ -58,7 +59,7 @@ namespace ICMemoryTest
         ///
         SECTION("MakeEmptyLinearAllocator")
         {
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_linearAllocatorBufferSize);
 
             auto set = IC::MakeUnorderedSet<int>(linearAllocator);
             set.insert(5);
@@ -90,7 +91,7 @@ namespace ICMemoryTest
         {
             const std::unordered_set<int> toCopy = { 5, 6 };
 
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_linearAllocatorBufferSize);
 
             auto set = IC::MakeUnorderedSet<int>(linearAllocator, toCopy.begin(), toCopy.end());
 
@@ -120,7 +121,7 @@ namespace ICMemoryTest
         {
             const std::unordered_set<int> toCopy = { 5, 6 };
 
-            IC::LinearAllocator linearAllocator;
+            IC::LinearAllocator linearAllocator(k_linearAllocatorBufferSize);
 
             auto set = IC::MakeUnorderedSet<int>(linearAllocator, toCopy);
 

@@ -269,13 +269,15 @@ namespace ICMemoryTest
 		///
 		SECTION("LinearAllocatorBacked")
 		{
+			constexpr std::size_t k_linearAllocatorBufferSize = 4 * 1024;
+
 			struct ExampleClass
 			{
 				ExampleClass(int x, int y) : m_x(x), m_y(y) {}
 				int m_x, m_y;
 			};
 
-			IC::LinearAllocator linearAllocator;
+			IC::LinearAllocator linearAllocator(k_linearAllocatorBufferSize);
 			IC::PagedObjectPool<ExampleClass> pagedObjectPool(linearAllocator);
 
 			auto allocated = pagedObjectPool.Create(1, 2);
