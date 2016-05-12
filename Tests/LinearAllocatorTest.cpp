@@ -28,10 +28,10 @@
 
 namespace ICMemoryTest
 {
-	namespace
-	{
-		constexpr std::size_t k_defaultBufferSize = 4 * 1024;
-	}
+    namespace
+    {
+        constexpr std::size_t k_defaultBufferSize = 4 * 1024;
+    }
 
     /// A series of tests for the LinearAllocator
     ///
